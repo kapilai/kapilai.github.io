@@ -9,6 +9,9 @@ export default function KapilChauhanPortfolio() {
     github: "https://github.com/Kapil-chn7",
     leetcode: "https://leetcode.com/u/kapilchn7/",
     linkedin: "https://www.linkedin.com/in/kapilchauhan200/",
+    twitter: "https://x.com/ninjacoder404",
+    resume:
+      "https://drive.google.com/file/d/1Y9MOdYXq7jseC80FMW7oGnNEIdMxDSEC/view?usp=sharing", // Replace with actual resume link
     summary:
       "I build backend microservices, full-stack applications, and AI-powered systems. Currently working on group post-booking management systems for Japan Airlines at TCS. I’m passionate about AI — exploring RAG, MCP, LangChain, and other emerging technologies to create cutting-edge intelligent solutions.",
     location: "New Delhi, India",
@@ -72,19 +75,19 @@ export default function KapilChauhanPortfolio() {
   const achievements = [
     {
       text: "NASA Space Apps — Semi Finalist",
-      link: "https://2022.spaceappschallenge.org/challenges/2022-challenges/",
+      link: "https://drive.google.com/file/d/1Dm_7sxSjr4_DOD_YIXbzWwleYTEh19_d/view",
     },
     {
       text: "IICC Coding Championship — Semi Finalist",
-      link: "https://www.iiccodingchampionship.com/",
+      link: "https://drive.google.com/file/d/1RreOq7KYbB_PY-JbJqcnBTemO7fggHHM/view",
     },
     {
       text: "Accio Wars — 911 rank among 11k+ contestants",
-      link: "https://acciojob.com/",
+      link: "https://drive.google.com/file/d/1H_LMXSKI61__2kO4UBCBB9gWyDUZrJwT/view",
     },
     {
       text: "1st rank — Chess Tournament (TCS Japan Delivery Center)",
-      link: null,
+      link: "https://drive.google.com/file/d/1SoF746R2iGvSkH0jIFeP-_fbXpcVmxdT/view",
     },
     {
       text: "Chess: 2100+ rating on Chess.com & lichess; Arena FIDE Master title on FIDE",
@@ -105,11 +108,11 @@ export default function KapilChauhanPortfolio() {
           <nav className="flex gap-4 items-center text-sm">
             {[
               "About",
+              "Contact",
               "Experience",
               "Projects",
               "Skills",
               "Achievements",
-              "Contact",
             ].map((section) => (
               <a
                 key={section}
@@ -134,23 +137,14 @@ export default function KapilChauhanPortfolio() {
           </h2>
           <p className="mt-4 text-gray-700 text-lg">{profile.summary}</p>
           <div className="mt-6 flex flex-wrap gap-3">
-            {[
-              { label: profile.email, href: `mailto:${profile.email}` },
-              { label: profile.phone, href: `tel:${profile.phone}` },
-              { label: "GitHub", href: profile.github },
-              { label: "LeetCode", href: profile.leetcode },
-              { label: "LinkedIn", href: profile.linkedin },
-            ].map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                target="_blank"
-                rel="noreferrer"
-                className="px-4 py-2 bg-indigo-600 text-white rounded-md shadow hover:bg-indigo-700 transition text-sm"
-              >
-                {link.label}
-              </a>
-            ))}
+            <a
+              href={profile.resume}
+              target="_blank"
+              rel="noreferrer"
+              className="px-4 py-2 bg-green-600 text-white rounded-md shadow hover:bg-green-700 transition text-sm"
+            >
+              Download Resume
+            </a>
           </div>
         </div>
         <div className="bg-white rounded-lg p-6 shadow border border-gray-100">
@@ -166,6 +160,51 @@ export default function KapilChauhanPortfolio() {
               <strong>Availability:</strong> {profile.availability}
             </li>
           </ul>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="max-w-6xl mx-auto px-6 py-12">
+        <h3 className="text-2xl font-semibold mb-6">Contact</h3>
+        <div className="bg-white p-6 rounded-lg shadow border border-gray-100 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div>
+            <p className="text-sm">
+              Email:{" "}
+              <a
+                href={`mailto:${profile.email}`}
+                className="hover:underline text-indigo-600"
+              >
+                {profile.email}
+              </a>
+            </p>
+            <p className="text-sm">
+              Phone:{" "}
+              <a
+                href={`tel:${profile.phone}`}
+                className="hover:underline text-indigo-600"
+              >
+                {profile.phone}
+              </a>
+            </p>
+          </div>
+          <div className="flex gap-3">
+            {[
+              { label: "GitHub", href: profile.github },
+              { label: "LeetCode", href: profile.leetcode },
+              { label: "LinkedIn", href: profile.linkedin },
+              { label: "Twitter", href: profile.twitter },
+            ].map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                rel="noreferrer"
+                className="px-4 py-2 bg-indigo-600 text-white rounded-md shadow hover:bg-indigo-700 transition text-sm"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -285,50 +324,6 @@ export default function KapilChauhanPortfolio() {
               )}
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* Contact */}
-      <section id="contact" className="max-w-6xl mx-auto px-6 py-12">
-        <h3 className="text-2xl font-semibold mb-6">Contact</h3>
-        <div className="bg-white p-6 rounded-lg shadow border border-gray-100 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <div>
-            <p className="text-sm">
-              Email:{" "}
-              <a
-                href={`mailto:${profile.email}`}
-                className="hover:underline text-indigo-600"
-              >
-                {profile.email}
-              </a>
-            </p>
-            <p className="text-sm">
-              Phone:{" "}
-              <a
-                href={`tel:${profile.phone}`}
-                className="hover:underline text-indigo-600"
-              >
-                {profile.phone}
-              </a>
-            </p>
-          </div>
-          <div className="flex gap-3">
-            {[
-              { label: "GitHub", href: profile.github },
-              { label: "LeetCode", href: profile.leetcode },
-              { label: "LinkedIn", href: profile.linkedin },
-            ].map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                target="_blank"
-                rel="noreferrer"
-                className="px-4 py-2 bg-indigo-600 text-white rounded-md shadow hover:bg-indigo-700 transition text-sm"
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
         </div>
       </section>
 
