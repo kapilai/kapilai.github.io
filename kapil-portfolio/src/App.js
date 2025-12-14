@@ -1,15 +1,15 @@
 import React from "react";
+import { Routes, Route } from "react-router-dom";
 import KapilChauhanPortfolio from "./KapilChauhanPortfolio";
 import AchievementsPage from "./pages/AchievementsPage";
 
 function App() {
-  const path = window.location.hash;
-
-  if (path === "#/achievements") {
-    return <AchievementsPage />;
-  }
-
-  return <KapilChauhanPortfolio />;
+  return (
+    <Routes>
+      <Route path="/" element={<KapilChauhanPortfolio />} />
+      <Route path="/achievements" element={<AchievementsPage />} />
+    </Routes>
+  );
 }
 
 export default App;
