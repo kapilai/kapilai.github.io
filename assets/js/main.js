@@ -5,6 +5,27 @@
  */
 
 /* ===================================
+   SECURITY HELPERS
+=================================== */
+function esc(str) {
+  if (str === null || str === undefined) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+// Only allow safe URL protocols — blocks javascript:, data:, vbscript: etc.
+function safeUrl(url) {
+  if (!url || typeof url !== 'string') return '#';
+  const trimmed = url.trim().toLowerCase();
+  if (trimmed.startsWith('javascript:') || trimmed.startsWith('data:') || trimmed.startsWith('vbscript:')) return '#';
+  return url.trim();
+}
+
+/* ===================================
    GLOBAL STATE
 =================================== */
 let portfolioData = null;
@@ -92,10 +113,10 @@ function renderHero() {
     { icon: 'fas fa-envelope', url: `mailto:${personal.email}`, label: 'Email' }
   ];
 
-  socialContainer.innerHTML = socials.map(s => `
-    <a href="${s.url}" target="${s.url.startsWith('mailto') ? '_self' : '_blank'}"
-       rel="noopener noreferrer" class="social-link" aria-label="${s.label}" title="${s.label}">
-      <i class="${s.icon}"></i>
+  socialContainer.innerHTML = socials.filter(s => s.url).map(s => `
+    <a href="${safeUrl(s.url)}" target="${s.url.startsWith('mailto') ? '_self' : '_blank'}"
+       rel="noopener noreferrer" class="social-link" aria-label="${esc(s.label)}" title="${esc(s.label)}">
+      <i class="${esc(s.icon)}"></i>
     </a>
   `).join('');
 
@@ -294,7 +315,7 @@ function renderAbout() {
   // Avatar
   if (personal.avatar) {
     const avatarEl = document.getElementById('avatar-display');
-    avatarEl.innerHTML = `<img src="${personal.avatar}" alt="${personal.name}" />`;
+    avatarEl.innerHTML = `<img src="${safeUrl(personal.avatar)}" alt="${esc(personal.name)}" />`;
   }
 }
 
@@ -426,11 +447,7 @@ function renderCertifications() {
             </span>
           </div>
           ${cert.credentialId ? `<div class="cert-id"><i class="fas fa-fingerprint"></i> ID: ${cert.credentialId}</div>` : ''}
-          ${cert.credentialUrl
-            ? `<a href="${cert.credentialUrl}" class="cert-link" target="_blank" rel="noopener">
-                <i class="fas fa-external-link-alt"></i> Verify Credential
-               </a>`
-            : ''}
+          ${cert.credentialUrl ? `<a href="${safeUrl(cert.credentialUrl)}" class="cert-link" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Verify Credential</a>` : ''}
         </div>
       </div>
     `;
@@ -486,14 +503,8 @@ function renderProjects() {
           ${proj.techStack.map(tech => `<span class="tech-badge">${tech}</span>`).join('')}
         </div>
         <div class="project-links">
-          <a href="${proj.github || '#'}" class="project-link ${!proj.github ? 'disabled' : ''}"
-             target="${proj.github ? '_blank' : '_self'}" rel="noopener" title="${proj.github ? 'View Code' : 'Private Repo'}">
-            <i class="fab fa-github"></i> Code
-          </a>
-          <a href="${proj.demo || '#'}" class="project-link ${!proj.demo ? 'disabled' : ''}"
-             target="${proj.demo ? '_blank' : '_self'}" rel="noopener" title="${proj.demo ? 'Live Demo' : 'No Demo'}">
-            <i class="fas fa-external-link-alt"></i> Demo
-          </a>
+          ${proj.github ? `<a href="${safeUrl(proj.github)}" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Code</a>` : ''}
+          ${proj.demo ? `<a href="${safeUrl(proj.demo)}" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Demo</a>` : ''}
         </div>
       </div>
     `;
@@ -556,11 +567,11 @@ function renderContact() {
     </div>
     <div class="contact-items">
       ${contactItems.map(item => `
-        <a href="${item.href}" class="contact-item" target="${item.href.startsWith('http') ? '_blank' : '_self'}" rel="noopener">
-          <div class="contact-item-icon"><i class="${item.icon}"></i></div>
+        <a href="${safeUrl(item.href)}" class="contact-item" target="${item.href.startsWith('http') ? '_blank' : '_self'}" rel="noopener noreferrer">
+          <div class="contact-item-icon"><i class="${esc(item.icon)}"></i></div>
           <div class="contact-item-info">
-            <div class="contact-item-label">${item.label}</div>
-            <div class="contact-item-value">${item.value}</div>
+            <div class="contact-item-label">${esc(item.label)}</div>
+            <div class="contact-item-value">${esc(item.value)}</div>
           </div>
           <i class="fas fa-arrow-right" style="color: var(--text-muted); font-size: 0.75rem;"></i>
         </a>
@@ -586,10 +597,10 @@ function renderFooter() {
     { icon: 'fas fa-envelope', url: `mailto:${personal.email}`, label: 'Email' }
   ];
 
-  document.getElementById('footer-social').innerHTML = socials.map(s => `
-    <a href="${s.url}" target="${s.url.startsWith('mailto') ? '_self' : '_blank'}"
-       rel="noopener noreferrer" class="social-link" aria-label="${s.label}" title="${s.label}">
-      <i class="${s.icon}"></i>
+  document.getElementById('footer-social').innerHTML = socials.filter(s => s.url).map(s => `
+    <a href="${safeUrl(s.url)}" target="${s.url.startsWith('mailto') ? '_self' : '_blank'}"
+       rel="noopener noreferrer" class="social-link" aria-label="${esc(s.label)}" title="${esc(s.label)}">
+      <i class="${esc(s.icon)}"></i>
     </a>
   `).join('');
 }
