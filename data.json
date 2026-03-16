@@ -372,7 +372,7 @@
   "certifications": [
     {
       "id": "cert-1",
-      "name": "AWS Certified Developer â Associate",
+      "name": "AWS Certified Developer Ã¢ÂÂ Associate",
       "issuer": "",
       "issuerIcon": "fas fa-certificate",
       "date": "",
@@ -430,6 +430,14 @@
     {
       "number": "2.5+",
       "label": "Years Of Experience"
+    },
+    {
+      "number": "500+",
+      "label": "DSA Questions Solved"
+    },
+    {
+      "number": "4",
+      "label": "Projects Completed"
     }
   ]
 }
