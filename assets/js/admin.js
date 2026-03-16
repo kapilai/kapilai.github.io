@@ -12,8 +12,8 @@ const STATE = {
   data: null,
   draftTimer: null,
   githubConfig: {
-    owner: '',
-    repo: '',
+    owner: 'kapilai',
+    repo: 'kapilai.github.io',
     branch: 'main',
     filePath: 'data.json'
   },
