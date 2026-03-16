@@ -298,12 +298,7 @@ function renderAbout() {
 
   // Stats
   const statsEl = document.getElementById('about-stats');
-  const stats = [
-    { number: '2+', label: 'Years Experience' },
-    { number: '400+', label: 'DSA Problems' },
-    { number: '13+', label: 'Microservices Built' },
-    { number: '3', label: 'Companies' }
-  ];
+  const stats = portfolioData.stats || [];
 
   statsEl.innerHTML = stats.map(s => `
     <div class="stat-card">

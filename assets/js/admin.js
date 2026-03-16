@@ -267,6 +267,7 @@ function renderSection(name) {
 
   switch (name) {
     case 'personal':    container.innerHTML = renderPersonalEditor(); break;
+    case 'stats':       container.innerHTML = renderStatsEditor(); break;
     case 'skills':      container.innerHTML = renderSkillsEditor(); break;
     case 'experience':  container.innerHTML = renderExperienceEditor(); break;
     case 'education':   container.innerHTML = renderEducationEditor(); break;
@@ -384,6 +385,76 @@ function savePersonal() {
 
   markDirty();
   showToast('Personal info saved to draft.', 'success');
+}
+
+/* ===================================
+   STATS EDITOR
+=================================== */
+function renderStatsEditor() {
+  const stats = STATE.data.stats || [];
+  return `
+    <div class="section-editor">
+      <div class="editor-header">
+        <div class="editor-title"><i class="fas fa-chart-bar"></i> About Stats</div>
+        <button class="admin-btn btn-sm btn-primary" onclick="addStat()">
+          <i class="fas fa-plus"></i> Add Stat
+        </button>
+      </div>
+      <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1.5rem;">
+        These appear as highlight cards in the About section (e.g. "2+ Years Experience").
+      </p>
+      <div id="stats-list" class="data-cards">
+        ${stats.map((s, i) => `
+          <div class="data-card expanded" id="stat-card-${i}">
+            <div class="data-card-body" style="padding-top:1rem;">
+              <div class="form-row">
+                <div class="admin-form-group">
+                  <label>Number / Value</label>
+                  <input type="text" id="stat-num-${i}" value="${esc(s.number)}" placeholder="2+" />
+                </div>
+                <div class="admin-form-group">
+                  <label>Label</label>
+                  <input type="text" id="stat-label-${i}" value="${esc(s.label)}" placeholder="Years Experience" />
+                </div>
+                <div style="display:flex;align-items:flex-end;padding-bottom:1rem;">
+                  <button class="btn-remove-item" onclick="removeStat(${i})" title="Remove">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+      <button class="btn-add-card" onclick="addStat()">
+        <i class="fas fa-plus-circle"></i> Add Stat
+      </button>
+    </div>
+  `;
+}
+
+function addStat() {
+  if (!STATE.data.stats) STATE.data.stats = [];
+  STATE.data.stats.push({ number: '', label: '' });
+  markDirty();
+  renderSection('stats');
+}
+
+function removeStat(i) {
+  STATE.data.stats.splice(i, 1);
+  markDirty();
+  renderSection('stats');
+}
+
+function collectStatsData() {
+  if (!STATE.data.stats) return;
+  STATE.data.stats.forEach((s, i) => {
+    const numEl = document.getElementById(`stat-num-${i}`);
+    const labelEl = document.getElementById(`stat-label-${i}`);
+    if (numEl) s.number = numEl.value.trim();
+    if (labelEl) s.label = labelEl.value.trim();
+  });
+  STATE.data.stats = STATE.data.stats.filter(s => s.number || s.label);
 }
 
 /* ===================================
@@ -1266,6 +1337,7 @@ function collectAllData() {
   const personalForm = document.getElementById('personal-form');
   if (personalForm) savePersonal();
 
+  collectStatsData();
   collectSkillsData();
   collectExperienceData();
   collectEducationData();
