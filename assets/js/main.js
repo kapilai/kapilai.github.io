@@ -550,8 +550,8 @@ function renderContact() {
   const contactItems = [
     { icon: 'fas fa-envelope', label: 'Email', value: personal.email, href: `mailto:${personal.email}` },
     { icon: 'fas fa-phone', label: 'Phone', value: personal.phone, href: `tel:${personal.phone}` },
-    { icon: 'fab fa-linkedin', label: 'LinkedIn', value: 'linkedin.com/in/kapilchauhan', href: personal.linkedin },
-    { icon: 'fab fa-github', label: 'GitHub', value: 'github.com/kapilchauhan99', href: personal.github }
+    { icon: 'fab fa-linkedin', label: 'LinkedIn', value: personal.linkedin.replace('https://', ''), href: personal.linkedin },
+    { icon: 'fab fa-github', label: 'GitHub', value: personal.github.replace('https://', ''), href: personal.github }
   ];
 
   container.innerHTML = `
