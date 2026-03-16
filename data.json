@@ -31,70 +31,172 @@
     {
       "category": "Languages",
       "items": [
-        { "name": "Java", "level": 90 },
-        { "name": "JavaScript", "level": 85 },
-        { "name": "C/C++", "level": 75 }
+        {
+          "name": "Java",
+          "level": 90
+        },
+        {
+          "name": "JavaScript",
+          "level": 85
+        },
+        {
+          "name": "C/C++",
+          "level": 75
+        }
       ]
     },
     {
       "category": "Backend",
       "items": [
-        { "name": "Spring Boot", "level": 90 },
-        { "name": "Node.js", "level": 80 },
-        { "name": "Express.js", "level": 80 },
-        { "name": "REST APIs", "level": 90 },
-        { "name": "JWT", "level": 85 },
-        { "name": "JPA / Hibernate", "level": 80 },
-        { "name": "OAuth", "level": 75 },
-        { "name": "Spring Security", "level": 80 }
+        {
+          "name": "Spring Boot",
+          "level": 90
+        },
+        {
+          "name": "Node.js",
+          "level": 80
+        },
+        {
+          "name": "Express.js",
+          "level": 80
+        },
+        {
+          "name": "REST APIs",
+          "level": 90
+        },
+        {
+          "name": "JWT",
+          "level": 85
+        },
+        {
+          "name": "JPA / Hibernate",
+          "level": 80
+        },
+        {
+          "name": "OAuth",
+          "level": 75
+        },
+        {
+          "name": "Spring Security",
+          "level": 80
+        }
       ]
     },
     {
       "category": "Frontend",
       "items": [
-        { "name": "React.js", "level": 80 },
-        { "name": "Next.js", "level": 75 },
-        { "name": "HTML", "level": 85 },
-        { "name": "CSS", "level": 80 }
+        {
+          "name": "React.js",
+          "level": 80
+        },
+        {
+          "name": "Next.js",
+          "level": 75
+        },
+        {
+          "name": "HTML",
+          "level": 85
+        },
+        {
+          "name": "CSS",
+          "level": 80
+        }
       ]
     },
     {
       "category": "Cloud & DevOps",
       "items": [
-        { "name": "AWS", "level": 80 },
-        { "name": "Docker", "level": 85 },
-        { "name": "Kubernetes", "level": 75 },
-        { "name": "ECS", "level": 70 },
-        { "name": "AWS Lambda", "level": 75 }
+        {
+          "name": "AWS",
+          "level": 80
+        },
+        {
+          "name": "Docker",
+          "level": 85
+        },
+        {
+          "name": "Kubernetes",
+          "level": 75
+        },
+        {
+          "name": "ECS",
+          "level": 70
+        },
+        {
+          "name": "AWS Lambda",
+          "level": 75
+        }
       ]
     },
     {
       "category": "Monitoring & Messaging",
       "items": [
-        { "name": "Kafka", "level": 80 },
-        { "name": "Redis", "level": 80 },
-        { "name": "Prometheus", "level": 75 },
-        { "name": "Grafana", "level": 75 },
-        { "name": "CloudWatch", "level": 70 }
+        {
+          "name": "Kafka",
+          "level": 80
+        },
+        {
+          "name": "Redis",
+          "level": 80
+        },
+        {
+          "name": "Prometheus",
+          "level": 75
+        },
+        {
+          "name": "Grafana",
+          "level": 75
+        },
+        {
+          "name": "CloudWatch",
+          "level": 70
+        }
       ]
     },
     {
       "category": "AI / ML",
       "items": [
-        { "name": "RAG", "level": 70 },
-        { "name": "LLM Integration", "level": 70 },
-        { "name": "Vector DB", "level": 65 },
-        { "name": "Deep Learning", "level": 60 }
+        {
+          "name": "RAG",
+          "level": 70
+        },
+        {
+          "name": "LLM Integration",
+          "level": 70
+        },
+        {
+          "name": "Vector DB",
+          "level": 65
+        },
+        {
+          "name": "Deep Learning",
+          "level": 60
+        }
       ]
     },
     {
       "category": "Developer Tools",
       "items": [
-        { "name": "Git / BitBucket", "level": 90 },
-        { "name": "JIRA", "level": 85 },
-        { "name": "Postman", "level": 90 },
-        { "name": "SoapUI", "level": 75 },
-        { "name": "VSCode", "level": 90 }
+        {
+          "name": "Git / BitBucket",
+          "level": 90
+        },
+        {
+          "name": "JIRA",
+          "level": 85
+        },
+        {
+          "name": "Postman",
+          "level": 90
+        },
+        {
+          "name": "SoapUI",
+          "level": 75
+        },
+        {
+          "name": "VSCode",
+          "level": 90
+        }
       ]
     }
   ],
@@ -103,60 +205,68 @@
       "id": "exp-1",
       "company": "BlueFetch Robotics",
       "role": "Founding Software Engineer",
-      "period": "Jan 2026 – Present",
-      "startDate": "2026-01-01",
+      "period": "",
+      "startDate": null,
       "endDate": null,
-      "location": "Noida, India",
-      "description": "Building the backend infrastructure for a next-generation robotics startup from the ground up.",
-      "points": [
-        "Developed backend services using Java & Spring Boot for robot telemetry ingestion & status tracking",
-        "Implemented a Kafka-based telemetry pipeline to process robot metrics such as motor current, power consumption & cleaning progress",
-        "Containerized backend services with Docker & deployed microservices on Kubernetes",
-        "Built monitoring dashboards using Prometheus & Grafana to visualize 10+ telemetry metrics",
-        "Integrated ROS nodes with backend services for communication between robot components & cloud systems",
-        "Built a control web interface using Next.js to trigger robot actions via ROS",
-        "Supported early-stage robotics development through system demos & technical documentation"
-      ],
-      "techStack": ["Java", "Spring Boot", "Kafka", "Docker", "Kubernetes", "Prometheus", "Grafana", "Next.js", "AWS", "GitHub"]
+      "location": "",
+      "description": "",
+      "points": [],
+      "techStack": [
+        "Java",
+        "Spring Boot",
+        "Kafka",
+        "Docker",
+        "Kubernetes",
+        "Prometheus",
+        "Grafana",
+        "Next.js",
+        "AWS",
+        "GitHub"
+      ]
     },
     {
       "id": "exp-2",
       "company": "Tata Consultancy Services",
       "role": "Software Developer",
-      "period": "Nov 2023 – Dec 2025",
-      "startDate": "2023-11-01",
-      "endDate": "2025-12-31",
-      "location": "Noida, India",
-      "description": "Delivered critical backend microservices for Japan Airlines' post-booking platform and built PoC AI solutions.",
-      "points": [
-        "Built Japan Airlines' new post-booking platform from scratch, delivering 13+ backend microservices",
-        "Developed a BFF & status-check microservices with a 2-retry mechanism, achieving 100% completion-or-fail guarantee",
-        "Implemented a rule-engine microservice with 99% automated test coverage, reducing manual QA effort by executing 1000+ rules under 5 minutes",
-        "Optimized API performance by 40% through SQL tuning, indexing, Redis-based caching, reducing latency by 60ms",
-        "Reduced JAR size by 40% & improved AWS Lambda cold-start latency by 95ms",
-        "Built PoC AI solutions including an FAQ chatbot & voice-call automation using RAG, LLMs, vector DB",
-        "Delivered robust code quality with 85%+ JUnit test coverage"
-      ],
-      "techStack": ["Java", "JavaScript", "Spring Boot", "Redis", "Kafka", "AWS", "Docker", "BitBucket"]
+      "period": "",
+      "startDate": null,
+      "endDate": null,
+      "location": "",
+      "description": "",
+      "points": [],
+      "techStack": [
+        "Java",
+        "JavaScript",
+        "Spring Boot",
+        "Redis",
+        "Kafka",
+        "AWS",
+        "Docker",
+        "BitBucket"
+      ]
     },
     {
       "id": "exp-3",
       "company": "Neonflake",
       "role": "Software Developer Intern",
-      "period": "Sep 2022 – Mar 2023",
-      "startDate": "2022-09-01",
-      "endDate": "2023-03-31",
-      "location": "Hyderabad, India",
-      "description": "Led end-to-end development of a full-stack web platform for an early-stage startup.",
-      "points": [
-        "Led end-to-end development of a full-stack web platform",
-        "Developed a micro-blogging platform with dynamic pagination",
-        "Built a custom payment gateway API that enabled 15L+ rs in donations & onboarded 100+ users",
-        "Developed an interactive map-based navigation system",
-        "Engineered backend architecture for authentication, role-based access control, & database ERD design",
-        "Deployed applications on Vercel with Cloudinary & AWS for media storage"
-      ],
-      "techStack": ["Node.js", "React.js", "JavaScript", "MongoDB", "AWS", "Vercel", "Cloudinary", "Figma", "GitHub", "Asana"]
+      "period": "",
+      "startDate": null,
+      "endDate": null,
+      "location": "",
+      "description": "",
+      "points": [],
+      "techStack": [
+        "Node.js",
+        "React.js",
+        "JavaScript",
+        "MongoDB",
+        "AWS",
+        "Vercel",
+        "Cloudinary",
+        "Figma",
+        "GitHub",
+        "Asana"
+      ]
     }
   ],
   "education": [
@@ -164,20 +274,39 @@
       "id": "edu-1",
       "institution": "Guru Gobind Singh Indraprastha University",
       "degree": "Bachelor of Technology",
-      "field": "Information Technology",
-      "grade": "8.4 / 10 CGPA",
-      "period": "Aug 2019 – Aug 2023",
-      "startDate": "2019-08-01",
-      "endDate": "2023-08-31",
-      "location": "New Delhi, India"
+      "field": "",
+      "grade": "",
+      "period": "",
+      "startDate": null,
+      "endDate": null,
+      "location": ""
+    },
+    {
+      "id": "edu-1773622072832",
+      "institution": "Airforce Senior Secondary School",
+      "degree": "Senior Secondary School",
+      "field": "",
+      "grade": "",
+      "period": "",
+      "startDate": null,
+      "endDate": null,
+      "location": ""
     }
   ],
   "projects": [
     {
       "id": "proj-1",
       "name": "Robot Telemetry Dashboard",
-      "description": "Real-time monitoring dashboard for robot fleet management. Visualizes 10+ telemetry metrics including motor current, power consumption, and cleaning progress using Prometheus & Grafana integrated with Kafka streams.",
-      "techStack": ["Java", "Spring Boot", "Kafka", "Prometheus", "Grafana", "Docker", "Kubernetes"],
+      "description": "",
+      "techStack": [
+        "Java",
+        "Spring Boot",
+        "Kafka",
+        "Prometheus",
+        "Grafana",
+        "Docker",
+        "Kubernetes"
+      ],
       "date": "2026-01-01",
       "github": "",
       "demo": "",
@@ -186,8 +315,15 @@
     {
       "id": "proj-2",
       "name": "AI FAQ Chatbot",
-      "description": "RAG-based intelligent chatbot for Japan Airlines customer support. Leverages LLMs and vector databases to provide accurate, context-aware answers to frequently asked questions, reducing support load significantly.",
-      "techStack": ["Python", "RAG", "LLM", "Vector DB", "Spring Boot", "AWS"],
+      "description": "",
+      "techStack": [
+        "Python",
+        "RAG",
+        "LLM",
+        "Vector DB",
+        "Spring Boot",
+        "AWS"
+      ],
       "date": "2024-11-01",
       "github": "",
       "demo": "",
@@ -196,8 +332,14 @@
     {
       "id": "proj-3",
       "name": "Custom Payment Gateway",
-      "description": "Full-stack payment gateway API enabling seamless donations. Processed 15L+ in transactions and onboarded 100+ users with secure authentication, transaction tracking, and real-time notifications.",
-      "techStack": ["Node.js", "Express.js", "MongoDB", "React.js", "AWS"],
+      "description": "",
+      "techStack": [
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "React.js",
+        "AWS"
+      ],
       "date": "2023-02-01",
       "github": "",
       "demo": "",
@@ -206,8 +348,15 @@
     {
       "id": "proj-4",
       "name": "Micro-Blog Platform",
-      "description": "Full-stack micro-blogging platform with dynamic pagination, rich text editing, user profiles, follow system, and interactive map-based navigation. Deployed on Vercel with Cloudinary for media management.",
-      "techStack": ["Node.js", "React.js", "MongoDB", "Cloudinary", "Vercel", "Figma"],
+      "description": "",
+      "techStack": [
+        "Node.js",
+        "React.js",
+        "MongoDB",
+        "Cloudinary",
+        "Vercel",
+        "Figma"
+      ],
       "date": "2022-09-01",
       "github": "",
       "demo": "",
@@ -216,81 +365,66 @@
   ],
   "hobbies": [
     {
-      "name": "Coding Challenges",
-      "icon": "fas fa-code",
-      "description": "Solved 400+ DSA problems on LeetCode & GFG. Love competitive programming and algorithm design."
-    },
-    {
-      "name": "Open Source",
-      "icon": "fab fa-github",
-      "description": "Contributing to open source projects and building tools that help the developer community."
-    },
-    {
-      "name": "Robotics Exploration",
-      "icon": "fas fa-robot",
-      "description": "Fascinated by ROS, embedded systems, and the future of autonomous robots."
-    },
-    {
-      "name": "Tech Blogging",
-      "icon": "fas fa-blog",
-      "description": "Reading and writing about cutting-edge technologies, system design, and engineering best practices."
+      "name": "Chess",
+      "icon": "fas fa-star",
+      "description": ""
     }
   ],
   "certifications": [
     {
       "id": "cert-1",
-      "name": "AWS Certified Developer – Associate",
-      "issuer": "Amazon Web Services",
-      "issuerIcon": "fab fa-aws",
-      "date": "2024-08-01",
-      "expiryDate": "2027-08-01",
+      "name": "AWS Certified Developer â Associate",
+      "issuer": "",
+      "issuerIcon": "fas fa-certificate",
+      "date": "",
+      "expiryDate": "",
       "credentialId": "",
       "credentialUrl": "",
-      "description": "Validates expertise in developing and maintaining AWS-based applications."
+      "description": ""
     },
     {
       "id": "cert-2",
       "name": "Docker Fundamentals",
-      "issuer": "Docker Inc.",
-      "issuerIcon": "fab fa-docker",
-      "date": "2023-10-01",
+      "issuer": "",
+      "issuerIcon": "fas fa-certificate",
+      "date": "",
       "expiryDate": "",
       "credentialId": "",
       "credentialUrl": "",
-      "description": "Demonstrates proficiency in containerizing applications and managing Docker environments."
+      "description": ""
     },
     {
       "id": "cert-3",
       "name": "Java SE Programming",
-      "issuer": "Oracle",
-      "issuerIcon": "fas fa-coffee",
-      "date": "2023-05-01",
+      "issuer": "",
+      "issuerIcon": "fas fa-certificate",
+      "date": "",
       "expiryDate": "",
       "credentialId": "",
       "credentialUrl": "",
-      "description": "Certified proficiency in core Java programming, OOP principles, and standard libraries."
+      "description": ""
     }
   ],
   "achievements": [
     {
       "title": "400+ DSA Problems Solved",
-      "description": "Solved over 400 Data Structures & Algorithms problems on LeetCode and GeeksForGeeks."
+      "description": ""
     },
     {
       "title": "13+ Microservices Delivered",
-      "description": "Built Japan Airlines' post-booking platform from scratch with 13+ production microservices."
+      "description": ""
     },
     {
       "title": "99% Automated Test Coverage",
-      "description": "Implemented rule-engine microservice with 99% automated test coverage executing 1000+ rules in under 5 minutes."
+      "description": ""
     },
     {
       "title": "40% API Performance Improvement",
-      "description": "Optimized API performance by 40% through SQL tuning, indexing, and Redis-based caching, reducing latency by 60ms."
+      "description": ""
     },
     {
       "title": "15L+ Donations Processed",
-      "description": "Built a custom payment gateway that enabled over 15 Lakh rupees in donations and onboarded 100+ users."
+      "description": ""
     }
   ]
 }
