@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin – Portfolio CMS | Kapil Chauhan</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="assets/css/admin.css" />
+</head>
+<body>
+
+  <!-- Loading Overlay -->
+  <div id="admin-loader" class="admin-loader hidden">
+    <div class="admin-loader-inner">
+      <div class="admin-spinner"></div>
+      <p id="loader-msg">Processing...</p>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Rollback Modal -->
+  <div id="rollback-modal" class="modal hidden">
+    <div class="modal-overlay" id="modal-overlay"></div>
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3><i class="fas fa-history"></i> Restore Previous Version</h3>
+        <button class="modal-close" id="modal-close"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body" id="rollback-list">
+        <p class="text-muted">Loading commit history...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Confirm Modal -->
+  <div id="confirm-modal" class="modal hidden">
+    <div class="modal-overlay" id="confirm-overlay"></div>
+    <div class="modal-box modal-box-sm">
+      <div class="modal-header">
+        <h3><i class="fas fa-exclamation-triangle"></i> Confirm Action</h3>
+      </div>
+      <div class="modal-body">
+        <p id="confirm-message">Are you sure?</p>
+      </div>
+      <div class="modal-footer">
+        <button class="admin-btn btn-ghost" id="confirm-cancel">Cancel</button>
+        <button class="admin-btn btn-danger" id="confirm-ok">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOGIN SCREEN -->
+  <div id="login-screen" class="login-screen">
+    <div class="login-card">
+      <div class="login-logo">
+        <span class="logo-bracket">&lt;</span>KC<span class="logo-bracket">/&gt;</span>
+      </div>
+      <h1 class="login-title">Portfolio CMS</h1>
+      <p class="login-subtitle">Admin access is required to manage content.</p>
+      <div class="login-info">
+        <i class="fas fa-info-circle"></i>
+        Enter your GitHub Personal Access Token (PAT) with <code>repo</code> scope to manage your portfolio content.
+        <br/><br/>
+        <a href="https://github.com/settings/tokens/new?scopes=repo&description=Portfolio+CMS" target="_blank" rel="noopener">
+          <i class="fas fa-external-link-alt"></i> Generate a PAT on GitHub
+        </a>
+      </div>
+      <form id="login-form" novalidate>
+        <div class="admin-form-group">
+          <label for="pat-input">GitHub Personal Access Token</label>
+          <div class="input-with-icon">
+            <i class="fas fa-key"></i>
+            <input type="password" id="pat-input" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" autocomplete="off" required />
+            <button type="button" class="toggle-pass" id="toggle-pat" title="Show/hide token">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+        </div>
+        <div id="login-error" class="login-error hidden"></div>
+        <button type="submit" class="admin-btn btn-primary btn-full" id="login-btn">
+          <i class="fas fa-sign-in-alt"></i> Sign In
+        </button>
+      </form>
+      <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+    </div>
+  </div>
+
+  <!-- ADMIN DASHBOARD -->
+  <div id="admin-app" class="admin-app hidden">
+
+    <!-- Top Bar -->
+    <header class="admin-topbar">
+      <div class="topbar-left">
+        <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="topbar-logo">
+          <span class="logo-bracket">&lt;</span>KC<span class="logo-bracket">/&gt;</span>
+          <span class="topbar-title">Portfolio CMS</span>
+        </div>
+      </div>
+      <div class="topbar-actions">
+        <span class="draft-indicator" id="draft-indicator">
+          <i class="fas fa-circle"></i> <span id="draft-status">Saved</span>
+        </span>
+        <a href="index.html" target="_blank" class="admin-btn btn-ghost btn-sm">
+          <i class="fas fa-eye"></i> Preview
+        </a>
+        <button class="admin-btn btn-ghost btn-sm" id="load-github-btn">
+          <i class="fas fa-cloud-download-alt"></i> Load from GitHub
+        </button>
+        <button class="admin-btn btn-warning btn-sm" id="rollback-btn">
+          <i class="fas fa-history"></i> Rollback
+        </button>
+        <button class="admin-btn btn-ghost btn-sm" id="save-draft-btn">
+          <i class="fas fa-save"></i> Save Draft
+        </button>
+        <button class="admin-btn btn-primary btn-sm" id="publish-btn">
+          <i class="fas fa-cloud-upload-alt"></i> Publish
+        </button>
+        <button class="admin-btn btn-danger btn-sm" id="logout-btn" title="Logout">
+          <i class="fas fa-sign-out-alt"></i>
+        </button>
+      </div>
+    </header>
+
+    <div class="admin-body">
+
+      <!-- Sidebar -->
+      <aside class="admin-sidebar" id="admin-sidebar">
+        <nav class="sidebar-nav">
+          <div class="sidebar-section-label">Content</div>
+          <a href="#" class="sidebar-item active" data-section="personal">
+            <i class="fas fa-user"></i> Personal Info
+          </a>
+          <a href="#" class="sidebar-item" data-section="skills">
+            <i class="fas fa-code"></i> Skills
+          </a>
+          <a href="#" class="sidebar-item" data-section="experience">
+            <i class="fas fa-briefcase"></i> Experience
+          </a>
+          <a href="#" class="sidebar-item" data-section="education">
+            <i class="fas fa-graduation-cap"></i> Education
+          </a>
+          <a href="#" class="sidebar-item" data-section="projects">
+            <i class="fas fa-rocket"></i> Projects
+          </a>
+          <a href="#" class="sidebar-item" data-section="hobbies">
+            <i class="fas fa-heart"></i> Hobbies
+          </a>
+          <a href="#" class="sidebar-item" data-section="certifications">
+            <i class="fas fa-certificate"></i> Certifications
+          </a>
+          <a href="#" class="sidebar-item" data-section="achievements">
+            <i class="fas fa-trophy"></i> Achievements
+          </a>
+          <div class="sidebar-section-label" style="margin-top: 20px;">Settings</div>
+          <a href="#" class="sidebar-item" data-section="settings">
+            <i class="fas fa-cog"></i> GitHub Config
+          </a>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="admin-main" id="admin-main">
+        <div id="section-container">
+          <div class="editor-placeholder">
+            <i class="fas fa-pencil-alt"></i>
+            <p>Select a section from the sidebar to start editing.</p>
+          </div>
+        </div>
+      </main>
+
+    </div>
+  </div>
+
+  <script src="assets/js/admin.js"></script>
+</body>
+</html>
