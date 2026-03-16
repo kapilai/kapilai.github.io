@@ -8,12 +8,6 @@
       "filePath": "data.json"
     }
   },
-  "stats": [
-    { "number": "2+", "label": "Years Experience" },
-    { "number": "400+", "label": "DSA Problems" },
-    { "number": "13+", "label": "Microservices Built" },
-    { "number": "3", "label": "Companies" }
-  ],
   "personal": {
     "name": "Kapil Chauhan",
     "title": "Software Engineer",
@@ -430,6 +424,12 @@
     {
       "title": "15L+ Donations Processed",
       "description": ""
+    }
+  ],
+  "stats": [
+    {
+      "number": "2.5+",
+      "label": "Years Of Experience"
     }
   ]
 }
