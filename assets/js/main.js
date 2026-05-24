@@ -1,807 +1,726 @@
-/**
- * PORTFOLIO MAIN JS
- * Kapil Chauhan - Personal Portfolio
- * Vanilla JS, no frameworks
- */
-
-/* ===================================
-   SECURITY HELPERS
-=================================== */
-function esc(str) {
-  if (str === null || str === undefined) return '';
-  return String(str)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
+/* ============================================================
+   EXPERIENCE CALCULATOR  — start date: Nov 2023
+============================================================ */
+function calcExperience() {
+  const start = new Date(2023, 10, 1); // Nov 2023
+  const now   = new Date();
+  const years = (now - start) / (1000 * 60 * 60 * 24 * 365.25);
+  return `${Math.round(years * 10) / 10}+`;
 }
 
-// Only allow safe URL protocols — blocks javascript:, data:, vbscript: etc.
-function safeUrl(url) {
-  if (!url || typeof url !== 'string') return '#';
-  const trimmed = url.trim().toLowerCase();
-  if (trimmed.startsWith('javascript:') || trimmed.startsWith('data:') || trimmed.startsWith('vbscript:')) return '#';
-  return url.trim();
+/* ============================================================
+   PORTFOLIO DATA — edit this object to update your content
+============================================================ */
+const DATA = {
+  personal: {
+    name:      "Kapil Chauhan",
+    title:     "Software Engineer",
+    tagline:   "Founding Software Engineer @ BlueFetch Robotics",
+    roles:     ["Software Engineer", "Backend & AI Developer", "Problem Solver"],
+    email:     "kapilchn7@gmail.com",
+    phone:     "+91 78348 20637",
+    linkedin:  "https://linkedin.com/in/kapilchauhan200",
+    github:    "https://github.com/Kapil-chn7",
+    leetcode:  "https://leetcode.com/u/kapilchn7/",
+    twitter:   "https://x.com/ninjacoder404",
+    avatar:    "",
+    location:  "Noida, India",
+    summary: `Founding Software Engineer at BlueFetch Robotics. Backend engineer — I build distributed, scalable systems with ${calcExperience()} years in microservices, Kafka, and cloud-native architecture. Decent on the frontend too.`,
+    about: `Software Engineer with ${calcExperience()} years of experience in scalable backend systems, microservices, and cloud-native applications. Currently building real-time robot telemetry infrastructure at BlueFetch Robotics. Previously at TCS, delivering enterprise microservices serving millions of users. Passionate about clean architecture, performance engineering, and the intersection of software with robotics and AI.`,
+    resumeUrl: "https://drive.google.com/file/d/1vib9QCTDI9triA2hh5XKRlkjHmfJnx39/view?usp=drive_link"
+  },
+
+  stats: [
+    { number: calcExperience(), label: "Years of experience"  },
+    { number: "500+", label: "DSA problems solved"   },
+    { number: "13+",  label: "Microservices shipped" },
+    { number: "4",    label: "Projects completed"    }
+  ],
+
+  achievements: [
+    "500+ DSA Problems Solved",
+    "13+ Microservices Delivered",
+    "99% Automated Test Coverage",
+    "40% API Performance Improvement",
+    "15L+ Donations Processed"
+  ],
+
+  skills: [
+    { category: "Languages",    items: ["Java", "C/C++", "TypeScript", "JavaScript", "Python", "SQL"] },
+    { category: "Frameworks",   items: ["Spring Boot", "Node.js", "Express.js", "React.js", "Next.js", "Angular", "Kafka"] },
+    { category: "Cloud & DevOps", items: ["AWS", "Docker", "Kubernetes", "Prometheus", "Grafana"] },
+    { category: "Databases",    items: ["PostgreSQL", "MySQL", "MongoDB", "Redis", "DynamoDB", "Amazon Aurora", "TimescaleDB"] },
+    { category: "AI / Tools",   items: ["RAG", "LLMs", "Pinecone", "JUnit", "Git", "JIRA", "WebGL", "Unity"] }
+  ],
+
+  experience: [
+    {
+      company:  "BlueFetch Robotics",
+      role:     "Founding Software Engineer",
+      period:   "Jan 2026 — Present",
+      current:  true,
+      location: "Noida, India",
+      desc:     "Early engineer at a robotics startup. I work across the full stack — backend services, frontend, and a browser-based robot simulator.",
+      points: [
+        "Built a Kafka telemetry pipeline handling 10+ sensor streams per device at under 50ms end-to-end",
+        "Designed Spring Boot microservices with TimescaleDB storing 5M+ data points daily for robot health monitoring",
+        "Set up Prometheus and Grafana dashboards that cut incident response time by 45%",
+        "Led frontend work on the robot control interface in Next.js and TypeScript",
+        "Built an interactive robot simulator in the browser using WebGL, Unity, and C#",
+        "Running infra on Docker, Kubernetes, and AWS with 99.9% uptime"
+      ],
+      tech: ["Java", "Spring Boot", "Kafka", "TimescaleDB", "Next.js", "TypeScript", "WebGL", "Unity", "Docker", "Kubernetes", "AWS", "Prometheus", "Grafana"]
+    },
+    {
+      company:  "Tata Consultancy Services",
+      role:     "Software Developer (Digital Wing)",
+      period:   "Nov 2023 — Dec 2025",
+      current:  false,
+      location: "Noida, India",
+      desc:     "Worked on Japan Airlines' domestic post-booking platform. Lots of distributed systems work, performance tuning, and a RAG chatbot POC on the side.",
+      points: [
+        "Delivered 13+ Spring Boot microservices for PNR and Amadeus integrations serving 30M+ passengers a year",
+        "Built a BFF layer with DynamoDB-backed state logging on AWS for long-running seat-processing operations",
+        "Wrote a rule engine that runs 1,000+ rules in under 3 minutes with 99% test coverage using JUnit",
+        "Cut API latency by 60ms and improved throughput 40% through Redis caching and SQL query optimization",
+        "Trimmed JAR size by 30% and improved Lambda cold-start by 95ms through library and pipeline cleanup",
+        "Built an Angular chatbot POC using LLMs and RAG — used for internal and client demos"
+      ],
+      tech: ["Java", "Spring Boot", "DynamoDB", "Redis", "AWS Lambda", "Docker", "Angular", "TypeScript", "RAG", "LLMs", "JUnit"]
+    },
+    {
+      company:  "Neonflake",
+      role:     "Full-Stack Developer Intern",
+      period:   "Sep 2022 — Mar 2023",
+      current:  false,
+      location: "Hyderabad, India",
+      desc:     "Interned at an early-stage startup and built their donation platform end-to-end.",
+      points: [
+        "Built kp.foundation from scratch with Node.js and React.js — scaled to 100+ users and processed Rs. 15L+ in donations",
+        "Designed a granular RBAC system and custom CMS that cut content management overhead by 50%",
+        "Handled responsive UI, Cloudinary media integration, Leaflet maps, and deployment on Heroku"
+      ],
+      tech: ["Node.js", "React.js", "MongoDB", "Cloudinary", "Heroku"]
+    }
+  ],
+
+  education: [
+    {
+      institution: "Guru Gobind Singh Indraprastha University",
+      degree:      "Bachelor of Technology",
+      field:       "Information Technology",
+      period:      "Aug 2019 — Aug 2023",
+      location:    "Delhi, India",
+      grade:       "8.4 CGPA"
+    },
+    {
+      institution: "",
+      degree:      "Class XII",
+      field:       "PCM + Computer Science",
+      period:      "",
+      location:    "",
+      grade:       "84.3%"
+    },
+    {
+      institution: "",
+      degree:      "Class X",
+      field:       "",
+      period:      "",
+      location:    "",
+      grade:       "9.4 CGPA"
+    }
+  ],
+
+  certifications: [
+    {
+      name:    "AWS Certified Developer — Associate",
+      issuer:  "Amazon Web Services",
+      icon:    "fab fa-aws",
+      desc:    "Validates expertise in developing and maintaining AWS-based applications."
+    },
+    {
+      name:    "Docker Fundamentals",
+      issuer:  "Docker Inc.",
+      icon:    "fab fa-docker",
+      desc:    "Proficiency in containerization, Docker images, and container orchestration."
+    },
+    {
+      name:    "Java SE Programming",
+      issuer:  "Oracle",
+      icon:    "fas fa-coffee",
+      desc:    "Core Java concepts, OOP principles, and enterprise Java development."
+    }
+  ],
+
+  awards: [
+    { cat: 'technical', icon: 'fas fa-rocket',     title: 'NASA Space Apps — Galactic Problem Solver',      org: 'NASA · Pune, India · Oct 2020',  label: 'Global',    desc: 'Awarded in special appreciation for efforts to address challenges on earth and in space.',       url: 'https://drive.google.com/drive/u/0/folders/1dIy-niDefNDR8L1PAgsLZCE-BK3-cssh' },
+    { cat: 'technical', icon: 'fas fa-code',        title: 'Innovate India Coding Championship — Semi Finalist', org: 'Coding Ninjas · July 2022', label: 'National',  desc: 'Certificate of Appreciation for active participation in IICC Round-2.',                       url: 'https://drive.google.com/drive/u/0/folders/1dIy-niDefNDR8L1PAgsLZCE-BK3-cssh' },
+    { cat: 'technical', icon: 'fas fa-terminal',    title: 'Accio Wars Coding Contest — Rank 911 / 11,000+',  org: 'AccioJob · July 2022',          label: 'Contest',   desc: 'Secured rank 911 out of 11,000+ participants.',                                             url: 'https://drive.google.com/drive/u/0/folders/1dIy-niDefNDR8L1PAgsLZCE-BK3-cssh' },
+    { cat: 'company',   icon: 'fas fa-gem',         title: 'Special Initiative Award — TCS Gems',            org: 'TCS · April 2025',              label: 'TCS Award', desc: 'Outstanding contribution to the organisation. Awarded by Milind Lakkad, EVP & Global Head HR.', url: 'https://drive.google.com/drive/u/0/folders/1dIy-niDefNDR8L1PAgsLZCE-BK3-cssh' },
+    { cat: 'company',   icon: 'fas fa-star',        title: 'Star Team Award — TCS Gems',                     org: 'TCS · October 2025',            label: 'TCS Award', desc: 'Outstanding contribution to the organisation. Awarded by Sudeep Kunnumal, VP & Global Head HR.', url: 'https://drive.google.com/file/d/1z3Nb-0-n2Dj_eWBHXqJaerbKZm7FFzHq/view?usp=sharing' },
+    { cat: 'other',     icon: 'fas fa-chess-king',  title: 'Chess Tournament Winner — JDC Chennai',          org: 'TCS · JDC Chennai · 2025',      label: '1st Place', desc: 'Awarded for outstanding contribution and commitment. Signed by Milind Karve, JDC Head.',       url: 'https://drive.google.com/file/d/1QjVLvMtd9_o19OdQh679ePlVY4j6LPBU/view?usp=sharing' }
+  ],
+
+  cp: {
+    note: '500+ DSA problems solved across LeetCode, GFG, CodeChef, Codeforces, and more.',
+    url:  'https://linktr.ee/ninjacoder404'
+  },
+
+  chess: [
+    { label: 'FIDE Certificate', url: 'https://drive.google.com/file/d/1ytppxYe4W5N5lRhFYGIJplTpCi8ZShHj/view?usp=sharing' },
+    { label: 'World Chess',      url: 'https://worldchess.com/profile/69975' },
+    { label: 'Chess.com',        url: 'https://www.chess.com/member/kapilchn' },
+    { label: 'Lichess',          url: 'https://lichess.org/@/gangMemberGM' }
+  ],
+
+  projects: [
+    {
+      name:      "BlueFetch Cloud — Robot Simulator",
+      desc:      "A browser-based simulator I built at BlueFetch to demo the robot before hardware was ready. You can drive an industrial cleaning robot live via a wireless RC interface — no install, just a browser tab.",
+      features:  [
+        { icon: "fas fa-cube",          label: "3D robot rendering",    note: "Real-time in the browser via WebGL"   },
+        { icon: "fas fa-gamepad",       label: "RC controller",         note: "Wireless control interface"           },
+        { icon: "fas fa-industry",      label: "Industrial robot",      note: "Cleaning robot model"                 },
+        { icon: "fas fa-code",          label: "Unity + C#",            note: "Game engine powering the sim"         },
+        { icon: "fas fa-globe",         label: "Browser-native",        note: "No install, runs anywhere"            },
+        { icon: "fas fa-rocket",        label: "Vercel deploy",         note: "Live and publicly accessible"         }
+      ],
+      tech:      ["Next.js", "TypeScript", "WebGL", "Unity", "C#", "Vercel"],
+      date:      "2026-03",
+      featured:  true,
+      highlight: true,
+      github:    "",
+      demo:      "https://blue-fetch-robot-simulator-ezxqhw74k-blue-fetch.vercel.app/"
+    },
+    {
+      name:      "Unstatic.dev",
+      desc:      "The backend layer for static sites. One form tag is all it takes — no server, no SDK, no config. Built this because static sites shouldn't need a backend just to handle a contact form.",
+      features:  [
+        { icon: "fas fa-bolt",        label: "Instant endpoints",   note: "Form backend in seconds"              },
+        { icon: "fas fa-shield-alt",  label: "Bot protection",      note: "Honeypot + permanent IP ban"          },
+        { icon: "fas fa-tachometer-alt", label: "Rate limiting",    note: "Per-IP, configurable windows"         },
+        { icon: "fas fa-envelope",    label: "Gmail digest",        note: "Delivered at 9 AM & 6 PM"             },
+        { icon: "fab fa-telegram",    label: "Telegram alerts",     note: "Instant notification per submission"  },
+        { icon: "fas fa-database",    label: "Postgres storage",    note: "Every submission saved, never lost"   }
+      ],
+      tech:      ["Node.js", "Express.js", "PostgreSQL", "Redis", "Docker", "Nginx", "OpenResty"],
+      date:      "2026-05",
+      featured:  true,
+      highlight: true,
+      github:    "",
+      demo:      "https://unstatic.dev"
+    },
+    {
+      name:      "SquareSense — Chess Board Coordinates",
+      desc:      "Built this for myself — I kept mixing up squares during analysis. It's a tiny Chrome extension (22KB) that puts a1–h8 coordinates right on the board, wherever you're playing.",
+      features:  [
+        { icon: "fas fa-chess-board",   label: "Coordinate overlay",    note: "a1–h8 on any chessboard"             },
+        { icon: "fas fa-magic",         label: "Auto-detection",        note: "Chess.com and Lichess out of the box" },
+        { icon: "fas fa-hand-pointer",  label: "Manual selection",      note: "Works on any other chess site"        },
+        { icon: "fas fa-sliders-h",     label: "Adjustable",            note: "Size, color, and transparency"        },
+        { icon: "fas fa-feather",       label: "22KB total",            note: "Lightweight, no bloat"                },
+        { icon: "fas fa-eye-slash",     label: "Visual only",           note: "No engine, no automation"             }
+      ],
+      tech:      ["Chrome Extension", "JavaScript", "HTML", "CSS"],
+      date:      "2025-06",
+      featured:  true,
+      highlight: true,
+      github:   "",
+      demo:     "https://chromewebstore.google.com/detail/squaresense-%E2%80%93-chess-board/pkcienlnlefnfdpdkjclomgjlekdokgd"
+    },
+  ]
+};
+
+/* ============================================================
+   HELPERS
+============================================================ */
+function esc(s) {
+  if (s == null) return '';
+  return String(s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
+}
+function safeUrl(u) {
+  if (!u) return '#';
+  const t = u.trim().toLowerCase();
+  if (['javascript:','data:','vbscript:'].some(p => t.startsWith(p))) return '#';
+  return u.trim();
+}
+function fmtDate(ym) {
+  const [y, m] = ym.split('-');
+  return m ? new Date(+y, +m - 1).toLocaleDateString('en-US', { month: 'short', year: 'numeric' }) : y;
 }
 
-/* ===================================
-   GLOBAL STATE
-=================================== */
-let portfolioData = null;
-let typingInterval = null;
-let particlesAnimId = null;
-
-/* ===================================
-   INIT
-=================================== */
+/* ============================================================
+   BOOT
+============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
-  fetchPortfolioData();
-  initScrollToTop();
-  initNavbar();
-  initHamburger();
-  initContactForm();
-  initKeyboardShortcut();
-});
+  // inject dynamic experience into ticker (both copies for seamless loop)
+  document.querySelectorAll('.ticker-exp').forEach(el => el.textContent = calcExperience());
 
-/* ===================================
-   DATA FETCH
-=================================== */
-async function fetchPortfolioData() {
-  try {
-    const res = await fetch('data.json?v=' + Date.now());
-    if (!res.ok) throw new Error('Failed to fetch data.json');
-    portfolioData = await res.json();
-    renderAll();
-  } catch (err) {
-    console.error('Portfolio data error:', err);
-    showToast('Failed to load portfolio data. Please refresh.', 'error');
-    hideLoader();
-  }
-}
-
-function renderAll() {
   renderHero();
   renderAbout();
   renderSkills();
   renderExperience();
   renderEducation();
-  renderCertifications();
   renderProjects();
-  renderHobbies();
+  renderAchievements();
   renderContact();
   renderFooter();
-  initRevealAnimations();
-  initParticles();
-  hideLoader();
-}
+  initReveal();
+  initNav();
+  initHamburger();
+  initScrollTop();
+  initContactForm();
+  initKeyShortcut();
+});
 
-/* ===================================
-   LOADER
-=================================== */
-function hideLoader() {
-  const loader = document.getElementById('loader');
-  if (loader) {
-    loader.classList.add('hidden');
-  }
-}
-
-/* ===================================
-   HERO SECTION
-=================================== */
+/* ============================================================
+   HERO
+============================================================ */
 function renderHero() {
-  const { personal } = portfolioData;
+  const p = DATA.personal;
+  document.title = `${p.name} — ${p.title}`;
 
-  document.getElementById('hero-name').textContent = personal.name;
-  document.getElementById('hero-description').textContent = personal.about.substring(0, 180) + '...';
-
-  const resumeBtn = document.getElementById('resume-btn');
-  if (personal.resumeUrl && personal.resumeUrl !== '#') {
-    resumeBtn.href = personal.resumeUrl;
-    resumeBtn.setAttribute('download', '');
+  const avatarWrap = document.getElementById('hero-avatar-wrap');
+  if (p.avatar) {
+    avatarWrap.innerHTML = `<img src="${safeUrl(p.avatar)}" alt="${esc(p.name)}" class="hero-avatar" />`;
   } else {
-    resumeBtn.style.opacity = '0.6';
-    resumeBtn.title = 'Resume coming soon';
+    avatarWrap.style.display = 'none';
   }
 
-  // Social icons
-  const socialContainer = document.getElementById('hero-social');
+  document.getElementById('hero-name').textContent    = p.name;
+  document.getElementById('hero-tagline').textContent = p.tagline;
+  document.getElementById('hero-desc').textContent    = p.summary;
+
+  document.getElementById('hero-actions').innerHTML = `
+    <a href="#experience" class="btn-solid"><i class="fas fa-arrow-down"></i> View Experience</a>
+    ${p.resumeUrl
+      ? `<a href="${safeUrl(p.resumeUrl)}" target="_blank" rel="noopener noreferrer" class="btn-outline"><i class="fas fa-file-alt"></i> Resume</a>`
+      : ''}`;
+
   const socials = [
-    { icon: 'fab fa-github', url: personal.github, label: 'GitHub' },
-    { icon: 'fab fa-linkedin', url: personal.linkedin, label: 'LinkedIn' },
-    { icon: 'fas fa-code', url: personal.leetcode, label: 'LeetCode' },
-    { icon: 'fas fa-envelope', url: `mailto:${personal.email}`, label: 'Email' }
+    { icon: 'fab fa-github',    url: p.github,            label: 'GitHub'   },
+    { icon: 'fab fa-linkedin',  url: p.linkedin,           label: 'LinkedIn' },
+    { icon: 'fab fa-x-twitter', url: p.twitter,            label: 'X'        },
+    { icon: 'fas fa-code',      url: p.leetcode,           label: 'LeetCode' },
+    { icon: 'fas fa-envelope',  url: `mailto:${p.email}`,  label: 'Email'    }
   ];
 
-  socialContainer.innerHTML = socials.filter(s => s.url).map(s => `
-    <a href="${safeUrl(s.url)}" target="${s.url.startsWith('mailto') ? '_self' : '_blank'}"
-       rel="noopener noreferrer" class="social-link" aria-label="${esc(s.label)}" title="${esc(s.label)}">
-      <i class="${esc(s.icon)}"></i>
-    </a>
-  `).join('');
-
-  // Start typing effect
-  const roles = personal.roles || [personal.title];
-  startTypingEffect(roles, 'typing-text');
-
-  // Set page title
-  document.title = `${personal.name} | ${personal.title}`;
+  document.getElementById('hero-socials').innerHTML = socials
+    .filter(s => s.url)
+    .map(s => `
+      <a href="${safeUrl(s.url)}"
+         target="${s.url.startsWith('mailto') ? '_self' : '_blank'}"
+         rel="noopener noreferrer" class="social-pill" aria-label="${esc(s.label)}">
+        <i class="${esc(s.icon)}"></i> ${esc(s.label)}
+      </a>`)
+    .join('');
 }
 
-/* ===================================
-   TYPING EFFECT
-=================================== */
-function startTypingEffect(texts, elementId) {
-  const el = document.getElementById(elementId);
-  if (!el) return;
-
-  let textIndex = 0;
-  let charIndex = 0;
-  let isDeleting = false;
-  const typeSpeed = 80;
-  const deleteSpeed = 45;
-  const pauseTime = 2200;
-
-  function type() {
-    const currentText = texts[textIndex];
-    if (isDeleting) {
-      el.textContent = currentText.substring(0, charIndex - 1);
-      charIndex--;
-    } else {
-      el.textContent = currentText.substring(0, charIndex + 1);
-      charIndex++;
-    }
-
-    let delay = isDeleting ? deleteSpeed : typeSpeed;
-
-    if (!isDeleting && charIndex === currentText.length) {
-      delay = pauseTime;
-      isDeleting = true;
-    } else if (isDeleting && charIndex === 0) {
-      isDeleting = false;
-      textIndex = (textIndex + 1) % texts.length;
-      delay = 400;
-    }
-
-    typingInterval = setTimeout(type, delay);
-  }
-
-  if (typingInterval) clearTimeout(typingInterval);
-  type();
-}
-
-/* ===================================
-   PARTICLES CANVAS
-=================================== */
-function initParticles() {
-  const canvas = document.getElementById('particles-canvas');
-  if (!canvas) return;
-
-  const ctx = canvas.getContext('2d');
-  let particles = [];
-  let animationId;
-
-  function resize() {
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
-  }
-
-  function createParticles() {
-    particles = [];
-    const count = Math.min(Math.floor((canvas.width * canvas.height) / 16000), 80);
-    for (let i = 0; i < count; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.4,
-        vy: (Math.random() - 0.5) * 0.4,
-        radius: Math.random() * 2 + 0.5,
-        alpha: Math.random() * 0.5 + 0.1
-      });
-    }
-  }
-
-  function drawParticles() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    // Draw connections
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles[j].y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        const maxDist = 120;
-
-        if (dist < maxDist) {
-          const opacity = (1 - dist / maxDist) * 0.15;
-          ctx.beginPath();
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = `rgba(108, 99, 255, ${opacity})`;
-          ctx.lineWidth = 0.6;
-          ctx.stroke();
-        }
-      }
-    }
-
-    // Draw dots
-    particles.forEach(p => {
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(108, 99, 255, ${p.alpha})`;
-      ctx.fill();
-    });
-  }
-
-  function updateParticles() {
-    particles.forEach(p => {
-      p.x += p.vx;
-      p.y += p.vy;
-
-      if (p.x < -10) p.x = canvas.width + 10;
-      if (p.x > canvas.width + 10) p.x = -10;
-      if (p.y < -10) p.y = canvas.height + 10;
-      if (p.y > canvas.height + 10) p.y = -10;
-    });
-  }
-
-  function animate() {
-    updateParticles();
-    drawParticles();
-    animationId = requestAnimationFrame(animate);
-  }
-
-  const resizeObserver = new ResizeObserver(() => {
-    resize();
-    createParticles();
-  });
-  resizeObserver.observe(canvas.parentElement);
-
-  resize();
-  createParticles();
-  animate();
-}
-
-/* ===================================
-   ABOUT SECTION
-=================================== */
+/* ============================================================
+   ABOUT
+============================================================ */
 function renderAbout() {
-  const { personal, achievements } = portfolioData;
+  const p = DATA.personal;
 
-  document.getElementById('about-text').textContent = personal.about;
+  document.getElementById('about-bio').textContent = p.about;
 
-  // Info grid
-  const infoEl = document.getElementById('about-info');
-  const infoItems = [
-    { icon: 'fas fa-map-marker-alt', label: 'Location', value: 'Noida, India', link: null },
-    { icon: 'fas fa-envelope', label: 'Email', value: personal.email, link: `mailto:${personal.email}` },
-    { icon: 'fab fa-linkedin', label: 'LinkedIn', value: 'kapilchauhan', link: personal.linkedin },
-    { icon: 'fas fa-phone', label: 'Phone', value: personal.phone, link: `tel:${personal.phone}` }
-  ];
+  document.getElementById('about-meta').innerHTML = [
+    { key: 'Location', val: p.location },
+    { key: 'Email',    val: p.email,    href: `mailto:${p.email}` },
+    { key: 'Phone',    val: p.phone,    href: `tel:${p.phone}` },
+    { key: 'LinkedIn', val: 'Profile',  href: p.linkedin },
+    { key: 'GitHub',   val: 'Profile',  href: p.github }
+  ].map(r => `
+    <div class="meta-row">
+      <span class="meta-key">${esc(r.key)}</span>
+      <span class="meta-val">
+        ${r.href
+          ? `<a href="${safeUrl(r.href)}" target="${r.href.startsWith('http') ? '_blank' : '_self'}" rel="noopener">${esc(r.val)}</a>`
+          : esc(r.val)}
+      </span>
+    </div>`).join('');
 
-  infoEl.innerHTML = infoItems.map(item => `
-    <div class="info-item">
-      <i class="${item.icon}"></i>
-      ${item.link
-        ? `<a href="${item.link}" target="${item.link.startsWith('http') ? '_blank' : '_self'}" rel="noopener">${item.value}</a>`
-        : `<span>${item.value}</span>`}
-    </div>
-  `).join('');
+  document.getElementById('about-chips').innerHTML = DATA.achievements
+    .map(a => `<span class="chip">${esc(a)}</span>`)
+    .join('');
 
-  // Achievement badges
-  const achEl = document.getElementById('about-achievements');
-  achEl.innerHTML = achievements.map(a => `
-    <span class="achievement-badge">
-      <i class="fas fa-trophy"></i> ${a.title}
-    </span>
-  `).join('');
-
-  // Stats
-  const statsEl = document.getElementById('about-stats');
-  const stats = portfolioData.stats || [];
-
-  statsEl.innerHTML = stats.map(s => `
-    <div class="stat-card">
-      <div class="stat-number">${s.number}</div>
-      <div class="stat-label">${s.label}</div>
-    </div>
-  `).join('');
-
-  // Avatar
-  if (personal.avatar) {
-    const avatarEl = document.getElementById('avatar-display');
-    avatarEl.innerHTML = `<img src="${safeUrl(personal.avatar)}" alt="${esc(personal.name)}" />`;
-  }
+  document.getElementById('about-stats').innerHTML = DATA.stats
+    .map(s => `
+      <div class="stat-row">
+        <div class="stat-num">${esc(s.number)}</div>
+        <div class="stat-lbl">${esc(s.label)}</div>
+      </div>`)
+    .join('');
 }
 
-/* ===================================
-   SKILLS SECTION
-=================================== */
+/* ============================================================
+   SKILLS
+============================================================ */
 function renderSkills() {
-  const { skills } = portfolioData;
-  const container = document.getElementById('skills-grid');
-
-  container.innerHTML = skills.map((category, idx) => `
-    <div class="skill-category reveal" style="transition-delay: ${idx * 0.08}s">
-      <div class="skill-category-title">${category.category}</div>
-      <div class="skill-tags">
-        ${category.items.map(skill => `
-          <span class="skill-tag" title="Proficiency: ${skill.level}%">${skill.name}</span>
-        `).join('')}
-      </div>
-    </div>
-  `).join('');
+  document.getElementById('skills-table').innerHTML = DATA.skills
+    .map(cat => `
+      <div class="skill-row">
+        <span class="skill-cat">${esc(cat.category)}</span>
+        <div class="skill-items">
+          ${cat.items.map(s => `<span class="tag">${esc(s)}</span>`).join('')}
+        </div>
+      </div>`)
+    .join('');
 }
 
-/* ===================================
-   EXPERIENCE TIMELINE
-=================================== */
+/* ============================================================
+   EXPERIENCE
+============================================================ */
 function renderExperience() {
-  const { experience } = portfolioData;
-  const container = document.getElementById('timeline');
-
-  container.innerHTML = experience.map((exp, idx) => {
-    const isCurrent = exp.endDate === null;
-    return `
-      <div class="timeline-item reveal" style="transition-delay: ${idx * 0.15}s">
-        <div class="timeline-dot-wrapper">
-          <div class="timeline-dot"></div>
-        </div>
-        <div class="timeline-content">
-          <div class="timeline-card">
-            <div class="timeline-period">
-              <i class="fas fa-calendar-alt"></i>
-              ${exp.period}
-              ${isCurrent ? '<span class="current-badge">Current</span>' : ''}
-            </div>
-            <div class="timeline-role">${exp.role}</div>
-            <div class="timeline-company">
-              <i class="fas fa-building"></i> ${exp.company}
-            </div>
-            <div class="timeline-location">
-              <i class="fas fa-map-marker-alt"></i> ${exp.location}
-            </div>
-            <div class="timeline-description">${exp.description}</div>
-            <div class="timeline-points">
-              ${exp.points.map(pt => `<div class="timeline-point">${pt}</div>`).join('')}
-            </div>
-            <div class="timeline-tech">
-              ${exp.techStack.map(tech => `<span class="tech-badge">${tech}</span>`).join('')}
-            </div>
+  document.getElementById('exp-list').innerHTML = DATA.experience
+    .map(e => `
+      <div class="exp-item">
+        <div class="exp-top">
+          <div class="exp-left">
+            <div class="exp-company">${esc(e.company)}</div>
+            <div class="exp-role">${esc(e.role)}</div>
+            ${e.location ? `<div class="exp-loc">${esc(e.location)}</div>` : ''}
+          </div>
+          <div class="exp-right">
+            <div class="exp-period">${esc(e.period)}</div>
+            ${e.current ? `<div class="exp-badge">Current</div>` : ''}
           </div>
         </div>
-        <div class="timeline-empty"></div>
-      </div>
-    `;
-  }).join('');
+        ${e.desc ? `<p class="exp-desc">${esc(e.desc)}</p>` : ''}
+        ${e.points.length ? `
+          <ul class="exp-points">
+            ${e.points.map(pt => `<li class="exp-point">${esc(pt)}</li>`).join('')}
+          </ul>` : ''}
+        <div class="exp-tech">
+          ${e.tech.map(t => `<span class="tag">${esc(t)}</span>`).join('')}
+        </div>
+      </div>`)
+    .join('');
 }
 
-/* ===================================
-   EDUCATION SECTION
-=================================== */
+/* ============================================================
+   EDUCATION
+============================================================ */
 function renderEducation() {
-  const { education } = portfolioData;
-  const container = document.getElementById('education-grid');
-
-  container.innerHTML = education.map((edu, idx) => `
-    <div class="education-card reveal" style="transition-delay: ${idx * 0.1}s">
-      <div class="edu-icon">
-        <i class="fas fa-graduation-cap"></i>
-      </div>
-      <div class="edu-content">
-        <div class="edu-institution">${edu.institution}</div>
-        <div class="edu-degree">${edu.degree} in ${edu.field}</div>
-        <div class="edu-grade">${edu.grade}</div>
-        <div class="edu-meta">
-          <div class="edu-meta-item">
-            <i class="fas fa-calendar"></i>
-            <span>${edu.period}</span>
-          </div>
-          <div class="edu-meta-item">
-            <i class="fas fa-map-marker-alt"></i>
-            <span>${edu.location}</span>
-          </div>
+  document.getElementById('edu-list').innerHTML = DATA.education
+    .map(e => `
+      <div class="edu-item">
+        <div>
+          ${e.institution ? `<div class="edu-inst">${esc(e.institution)}</div>` : ''}
+          <div class="edu-deg">${esc(e.degree)}${e.field ? ' — ' + esc(e.field) : ''}</div>
+          ${e.location ? `<div class="edu-detail">${esc(e.location)}</div>` : ''}
+          ${e.grade     ? `<div class="edu-grade">${esc(e.grade)}</div>` : ''}
         </div>
-      </div>
-    </div>
-  `).join('');
+        ${e.period ? `<div class="edu-period">${esc(e.period)}</div>` : ''}
+      </div>`)
+    .join('');
 }
 
-/* ===================================
-   CERTIFICATIONS SECTION
-=================================== */
-function renderCertifications() {
-  const { certifications } = portfolioData;
-  const container = document.getElementById('certifications-grid');
-  if (!container || !certifications || !certifications.length) return;
-
-  container.innerHTML = certifications.map((cert, idx) => {
-    const issueDate = new Date(cert.date);
-    const issueDateStr = issueDate.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
-    const hasExpiry = cert.expiryDate && cert.expiryDate.trim();
-    const expiryDate = hasExpiry ? new Date(cert.expiryDate) : null;
-    const isExpired = expiryDate && expiryDate < new Date();
-    const expiryStr = expiryDate
-      ? expiryDate.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
-      : 'No Expiry';
-
-    return `
-      <div class="cert-card reveal" style="transition-delay: ${idx * 0.1}s">
-        <div class="cert-icon">
-          <i class="${cert.issuerIcon || 'fas fa-certificate'}"></i>
-        </div>
-        <div class="cert-body">
-          <div class="cert-name">${cert.name}</div>
-          <div class="cert-issuer"><i class="fas fa-building"></i> ${cert.issuer}</div>
-          ${cert.description ? `<div class="cert-description">${cert.description}</div>` : ''}
-          <div class="cert-meta">
-            <span class="cert-date"><i class="fas fa-calendar-check"></i> Issued ${issueDateStr}</span>
-            <span class="cert-expiry ${isExpired ? 'expired' : ''}">
-              <i class="fas fa-${isExpired ? 'exclamation-circle' : 'shield-alt'}"></i>
-              ${isExpired ? 'Expired ' : ''}${expiryStr}
-            </span>
-          </div>
-          ${cert.credentialId ? `<div class="cert-id"><i class="fas fa-fingerprint"></i> ID: ${cert.credentialId}</div>` : ''}
-          ${cert.credentialUrl ? `<a href="${safeUrl(cert.credentialUrl)}" class="cert-link" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Verify Credential</a>` : ''}
-        </div>
-      </div>
-    `;
-  }).join('');
-}
-
-/* ===================================
-   PROJECTS SECTION
-=================================== */
+/* ============================================================
+   PROJECTS
+============================================================ */
 function renderProjects() {
-  const { projects } = portfolioData;
+  const sorted = [...DATA.projects].sort((a, b) => b.date.localeCompare(a.date));
+  const techs  = [...new Set(sorted.flatMap(p => p.tech))].slice(0, 8);
 
-  // Sort by date (newest first)
-  const sorted = [...projects].sort((a, b) => new Date(b.date) - new Date(a.date));
+  const filterEl = document.getElementById('proj-filter');
+  filterEl.innerHTML =
+    `<button class="filter-btn active" data-f="all">All</button>` +
+    techs.map(t => `<button class="filter-btn" data-f="${esc(t)}">${esc(t)}</button>`).join('');
 
-  // Build filter tags
-  const allTechs = new Set();
-  sorted.forEach(p => p.techStack.forEach(t => allTechs.add(t)));
-  const topTechs = [...allTechs].slice(0, 8);
-
-  const filterContainer = document.getElementById('projects-filter');
-  filterContainer.innerHTML = `
-    <button class="filter-btn active" data-filter="all">All Projects</button>
-    ${topTechs.map(tech => `
-      <button class="filter-btn" data-filter="${tech}">${tech}</button>
-    `).join('')}
-  `;
-
-  filterContainer.addEventListener('click', e => {
+  filterEl.addEventListener('click', e => {
     const btn = e.target.closest('.filter-btn');
     if (!btn) return;
-    filterContainer.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    filterEl.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    filterProjects(btn.dataset.filter);
+    document.querySelectorAll('.proj-card').forEach(c => {
+      const show = btn.dataset.f === 'all' || c.dataset.tech.split(',').includes(btn.dataset.f);
+      c.classList.toggle('hidden-filter', !show);
+    });
   });
 
-  // Render cards
-  const grid = document.getElementById('projects-grid');
-  grid.innerHTML = sorted.map((proj, idx) => {
-    const date = new Date(proj.date);
-    const dateStr = date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
-    return `
-      <div class="project-card reveal" data-tech="${proj.techStack.join(',')}" style="transition-delay: ${idx * 0.1}s">
-        <div class="project-header">
-          <div class="project-title-area">
-            ${proj.featured ? '<span class="featured-badge"><i class="fas fa-star"></i> Featured</span>' : ''}
-            <div class="project-name">${proj.name}</div>
+  document.getElementById('proj-grid').innerHTML = sorted
+    .map((proj, i) => {
+      const isHighlight = proj.highlight;
+      const demoIcon    = proj.demo?.includes('chromewebstore') ? 'fab fa-chrome' : 'fas fa-external-link-alt';
+      const demoLabel   = proj.demo?.includes('chromewebstore') ? 'Extension' : 'Live';
+
+      const featuresHtml = isHighlight && proj.features ? `
+        <div class="proj-features">
+          ${proj.features.map(f => `
+            <div class="proj-feature">
+              <i class="${esc(f.icon)}"></i>
+              <div>
+                <div class="pf-label">${esc(f.label)}</div>
+                <div class="pf-note">${esc(f.note)}</div>
+              </div>
+            </div>`).join('')}
+        </div>` : '';
+
+      return `
+        <div class="proj-card${isHighlight ? ' proj-highlight' : ''}" data-tech="${proj.tech.join(',')}" style="transition-delay:${i * 0.06}s">
+          ${i === 0 ? `<div class="proj-starburst"><span>New</span></div>` : ''}
+          ${proj.featured ? `<div class="proj-featured">${isHighlight ? '⚡ Active Project' : 'Featured'}</div>` : ''}
+          <div class="proj-name">${esc(proj.name)}</div>
+          <div class="proj-desc">${esc(proj.desc)}</div>
+          ${featuresHtml}
+          <div class="proj-tech">${proj.tech.map(t => `<span class="tag">${esc(t)}</span>`).join('')}</div>
+          <div class="proj-meta">
+            <span class="proj-date">${esc(fmtDate(proj.date))}</span>
+            <div class="proj-links">
+              ${proj.github ? `<a href="${safeUrl(proj.github)}" target="_blank" rel="noopener" class="proj-link"><i class="fab fa-github"></i> Code</a>` : ''}
+              ${proj.demo   ? `<a href="${safeUrl(proj.demo)}" target="_blank" rel="noopener" class="proj-link"><i class="${demoIcon}"></i> ${demoLabel}</a>` : ''}
+            </div>
           </div>
-          <div class="project-date">${dateStr}</div>
-        </div>
-        <div class="project-description">${proj.description}</div>
-        <div class="project-tech">
-          ${proj.techStack.map(tech => `<span class="tech-badge">${tech}</span>`).join('')}
-        </div>
-        <div class="project-links">
-          ${proj.github ? `<a href="${safeUrl(proj.github)}" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Code</a>` : ''}
-          ${proj.demo ? `<a href="${safeUrl(proj.demo)}" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Demo</a>` : ''}
-        </div>
-      </div>
-    `;
-  }).join('');
+        </div>`;
+    })
+    .join('');
+
+  // trigger reveal
+  setTimeout(() => {
+    document.querySelectorAll('.proj-card').forEach(c => c.classList.add('visible'));
+  }, 100);
 }
 
-function filterProjects(filter) {
-  const cards = document.querySelectorAll('.project-card');
-  cards.forEach(card => {
-    if (filter === 'all') {
-      card.classList.remove('hidden-filter');
-    } else {
-      const techs = card.dataset.tech.split(',');
-      if (techs.includes(filter)) {
-        card.classList.remove('hidden-filter');
-      } else {
-        card.classList.add('hidden-filter');
-      }
-    }
-  });
-}
-
-/* ===================================
-   HOBBIES SECTION
-=================================== */
-function renderHobbies() {
-  const { hobbies } = portfolioData;
-  const container = document.getElementById('hobbies-grid');
-
-  container.innerHTML = hobbies.map((h, idx) => `
-    <div class="hobby-card reveal" style="transition-delay: ${idx * 0.1}s">
-      <div class="hobby-icon">
-        <i class="${h.icon}"></i>
-      </div>
-      <div class="hobby-name">${h.name}</div>
-      <div class="hobby-description">${h.description}</div>
-    </div>
-  `).join('');
-}
-
-/* ===================================
-   CONTACT SECTION
-=================================== */
-function renderContact() {
-  const { personal } = portfolioData;
-  const container = document.getElementById('contact-info');
-
-  const contactItems = [
-    { icon: 'fas fa-envelope', label: 'Email', value: personal.email, href: `mailto:${personal.email}` },
-    { icon: 'fas fa-phone', label: 'Phone', value: personal.phone, href: `tel:${personal.phone}` },
-    { icon: 'fab fa-linkedin', label: 'LinkedIn', value: personal.linkedin.replace('https://', ''), href: personal.linkedin },
-    { icon: 'fab fa-github', label: 'GitHub', value: personal.github.replace('https://', ''), href: personal.github }
+/* ============================================================
+   ACHIEVEMENTS
+============================================================ */
+function renderAchievements() {
+  const cats = [
+    { key: 'technical', label: 'Technical & Coding' },
+    { key: 'company',   label: 'Company Awards'     },
+    { key: 'other',     label: 'Other'               }
   ];
 
-  container.innerHTML = `
-    <div class="contact-info-title">Let's Build Something <span class="gradient-text">Together</span></div>
-    <div class="contact-info-subtitle">
-      I'm open to new opportunities, collaborations, and interesting conversations.
-      Whether it's a project idea, a question, or just a hello — feel free to reach out!
-    </div>
-    <div class="contact-items">
-      ${contactItems.map(item => `
-        <a href="${safeUrl(item.href)}" class="contact-item" target="${item.href.startsWith('http') ? '_blank' : '_self'}" rel="noopener noreferrer">
-          <div class="contact-item-icon"><i class="${esc(item.icon)}"></i></div>
-          <div class="contact-item-info">
-            <div class="contact-item-label">${esc(item.label)}</div>
-            <div class="contact-item-value">${esc(item.value)}</div>
+  function awardRows(list) {
+    return list.map(a => `
+      <div class="award-row">
+        <div class="award-icon"><i class="${esc(a.icon)}"></i></div>
+        <div class="award-body">
+          <div class="award-meta">
+            <span class="award-title">${esc(a.title)}</span>
+            <span class="award-label">${esc(a.label)}</span>
           </div>
-          <i class="fas fa-arrow-right" style="color: var(--text-muted); font-size: 0.75rem;"></i>
+          <div class="award-org">${esc(a.org)}</div>
+          <p class="award-desc">${esc(a.desc)}</p>
+          ${a.url ? `<a href="${safeUrl(a.url)}" target="_blank" rel="noopener noreferrer" class="award-link"><i class="fas fa-external-link-alt"></i> View Certificate</a>` : ''}
+        </div>
+      </div>`).join('');
+  }
+
+  document.getElementById('awards-list').innerHTML = cats
+    .map(cat => {
+      const list = DATA.awards.filter(a => a.cat === cat.key);
+      if (!list.length) return '';
+      return `
+        <div class="award-category">
+          <p class="award-cat-label">${esc(cat.label)}</p>
+          <div class="awards-list">${awardRows(list)}</div>
+        </div>`;
+    }).join('');
+
+  document.getElementById('ach-extras').innerHTML = `
+    <div class="ach-extra-block">
+      <p class="ach-extra-title"><i class="fas fa-code-branch"></i> Competitive Programming</p>
+      <p class="ach-extra-note">${esc(DATA.cp.note)}</p>
+      <div class="ach-btn-row">
+        <a href="${safeUrl(DATA.cp.url)}" target="_blank" rel="noopener noreferrer" class="ach-btn">
+          <i class="fas fa-external-link-alt"></i> View All Profiles
         </a>
-      `).join('')}
+      </div>
     </div>
-  `;
+    <div class="ach-extra-block">
+      <p class="ach-extra-title"><i class="fas fa-chess"></i> Chess — Arena FIDE Master (AFM) · 2300+</p>
+      <p class="ach-extra-note">Official FIDE title · 2300+ on Chess.com Rapid &amp; Blitz</p>
+      <div class="ach-btn-row">
+        ${DATA.chess.map(c => `
+          <a href="${safeUrl(c.url)}" target="_blank" rel="noopener noreferrer" class="ach-btn">
+            ${esc(c.label)}
+          </a>`).join('')}
+      </div>
+    </div>`;
 }
 
-/* ===================================
-   FOOTER
-=================================== */
-function renderFooter() {
-  const { personal } = portfolioData;
-  const year = new Date().getFullYear();
+/* ============================================================
+   CONTACT
+============================================================ */
+function renderContact() {
+  const p = DATA.personal;
+  const links = [
+    { icon: 'fas fa-envelope', label: 'Email',    val: p.email,    href: `mailto:${p.email}` },
+    { icon: 'fas fa-phone',    label: 'Phone',    val: p.phone,    href: `tel:${p.phone}` },
+    { icon: 'fab fa-linkedin', label: 'LinkedIn', val: 'linkedin.com/in/kapilchauhan200', href: p.linkedin },
+    { icon: 'fab fa-github',   label: 'GitHub',   val: 'github.com/Kapil-chn7',          href: p.github }
+  ];
 
-  document.getElementById('footer-copy').textContent =
-    `© ${year} ${personal.name}. All rights reserved.`;
+  document.getElementById('contact-left').innerHTML = `
+    <p class="contact-lead">Let's build something<br>great together.</p>
+    <p class="contact-sub">Open to new roles, collaborations, and interesting conversations. Whether it's a project, a question, or just a hello — reach out.</p>
+    <div class="contact-links">
+      ${links.map(l => `
+        <a href="${safeUrl(l.href)}" class="c-link"
+           target="${l.href.startsWith('http') ? '_blank' : '_self'}" rel="noopener noreferrer">
+          <i class="${esc(l.icon)} c-icon"></i>
+          <div class="c-info">
+            <div class="c-label">${esc(l.label)}</div>
+            <div class="c-val">${esc(l.val)}</div>
+          </div>
+          <i class="fas fa-arrow-right c-arrow"></i>
+        </a>`).join('')}
+    </div>`;
+}
+
+/* ============================================================
+   FOOTER
+============================================================ */
+function renderFooter() {
+  const p = DATA.personal;
+  document.getElementById('footer-copy').textContent = `© ${new Date().getFullYear()} ${p.name}`;
 
   const socials = [
-    { icon: 'fab fa-github', url: personal.github, label: 'GitHub' },
-    { icon: 'fab fa-linkedin', url: personal.linkedin, label: 'LinkedIn' },
-    { icon: 'fas fa-code', url: personal.leetcode, label: 'LeetCode' },
-    { icon: 'fas fa-envelope', url: `mailto:${personal.email}`, label: 'Email' }
+    { icon: 'fab fa-github',    url: p.github,           label: 'GitHub'   },
+    { icon: 'fab fa-linkedin',  url: p.linkedin,          label: 'LinkedIn' },
+    { icon: 'fab fa-x-twitter', url: p.twitter,           label: 'X'        },
+    { icon: 'fas fa-code',      url: p.leetcode,          label: 'LeetCode' },
+    { icon: 'fas fa-envelope',  url: `mailto:${p.email}`, label: 'Email'    }
   ];
 
-  document.getElementById('footer-social').innerHTML = socials.filter(s => s.url).map(s => `
-    <a href="${safeUrl(s.url)}" target="${s.url.startsWith('mailto') ? '_self' : '_blank'}"
-       rel="noopener noreferrer" class="social-link" aria-label="${esc(s.label)}" title="${esc(s.label)}">
-      <i class="${esc(s.icon)}"></i>
-    </a>
-  `).join('');
+  document.getElementById('footer-socials').innerHTML = socials
+    .filter(s => s.url)
+    .map(s => `
+      <a href="${safeUrl(s.url)}"
+         target="${s.url.startsWith('mailto') ? '_self' : '_blank'}"
+         rel="noopener noreferrer" class="f-social" aria-label="${esc(s.label)}" title="${esc(s.label)}">
+        <i class="${esc(s.icon)}"></i>
+      </a>`)
+    .join('');
 }
 
-/* ===================================
-   SCROLL REVEAL (IntersectionObserver)
-=================================== */
-function initRevealAnimations() {
-  const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .skill-category, .timeline-item, .education-card, .project-card, .hobby-card');
+/* ============================================================
+   REVEAL ON SCROLL
+============================================================ */
+function initReveal() {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.07, rootMargin: '0px 0px -32px 0px' });
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  });
-
-  revealEls.forEach(el => observer.observe(el));
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 }
 
-/* ===================================
-   SCROLL TO TOP
-=================================== */
-function initScrollToTop() {
-  const btn = document.getElementById('scroll-top');
-  if (!btn) return;
+/* ============================================================
+   NAVBAR
+============================================================ */
+function initNav() {
+  const nb    = document.getElementById('navbar');
+  const links = document.querySelectorAll('.nav-link[href^="#"]');
 
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 500) {
-      btn.classList.add('visible');
-    } else {
-      btn.classList.remove('visible');
-    }
+    nb.classList.toggle('scrolled', window.scrollY > 10);
+    let cur = '';
+    links.forEach(l => {
+      const sec = document.querySelector(l.getAttribute('href'));
+      if (sec && window.scrollY >= sec.offsetTop - 100) cur = l.getAttribute('href');
+    });
+    links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === cur));
   }, { passive: true });
+
+  links.forEach(l => {
+    l.addEventListener('click', e => {
+      const href = l.getAttribute('href');
+      if (!href.startsWith('#')) return;
+      e.preventDefault();
+      document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+      closeMenu();
+    });
+  });
+}
+
+/* ============================================================
+   HAMBURGER
+============================================================ */
+function initHamburger() {
+  const btn  = document.getElementById('hamburger');
+  const menu = document.getElementById('nav-links');
+  if (!btn || !menu) return;
 
   btn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-}
-
-/* ===================================
-   NAVBAR
-=================================== */
-function initNavbar() {
-  const navbar = document.getElementById('navbar');
-  const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
-  const sections = [];
-
-  window.addEventListener('scroll', () => {
-    // Scrolled class
-    if (window.scrollY > 20) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
-
-    // Active link highlight
-    highlightActiveNav(navLinks, sections);
-  }, { passive: true });
-
-  // Smooth scroll on nav click
-  navLinks.forEach(link => {
-    link.addEventListener('click', e => {
-      const href = link.getAttribute('href');
-      if (href.startsWith('#')) {
-        e.preventDefault();
-        const target = document.querySelector(href);
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth' });
-          // Close mobile menu
-          document.getElementById('nav-links').classList.remove('open');
-          document.getElementById('hamburger').classList.remove('active');
-          document.getElementById('hamburger').setAttribute('aria-expanded', 'false');
-        }
-      }
-    });
-  });
-}
-
-function highlightActiveNav(navLinks, sections) {
-  let current = '';
-  const scrollY = window.scrollY;
-
-  navLinks.forEach(link => {
-    const href = link.getAttribute('href');
-    if (!href.startsWith('#')) return;
-    const section = document.querySelector(href);
-    if (!section) return;
-
-    const top = section.offsetTop - 100;
-    const bottom = top + section.offsetHeight;
-
-    if (scrollY >= top && scrollY < bottom) {
-      current = href;
-    }
+    const open = menu.classList.toggle('open');
+    btn.classList.toggle('active', open);
+    btn.setAttribute('aria-expanded', open);
   });
 
-  navLinks.forEach(link => {
-    link.classList.remove('active');
-    if (link.getAttribute('href') === current) {
-      link.classList.add('active');
-    }
-  });
-}
-
-/* ===================================
-   HAMBURGER MENU
-=================================== */
-function initHamburger() {
-  const hamburger = document.getElementById('hamburger');
-  const navLinks = document.getElementById('nav-links');
-
-  if (!hamburger || !navLinks) return;
-
-  hamburger.addEventListener('click', () => {
-    const isOpen = navLinks.classList.toggle('open');
-    hamburger.classList.toggle('active', isOpen);
-    hamburger.setAttribute('aria-expanded', isOpen.toString());
-  });
-
-  // Close on outside click
   document.addEventListener('click', e => {
-    if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
-      navLinks.classList.remove('open');
-      hamburger.classList.remove('active');
-      hamburger.setAttribute('aria-expanded', 'false');
-    }
+    if (!btn.contains(e.target) && !menu.contains(e.target)) closeMenu();
   });
 }
 
-/* ===================================
+function closeMenu() {
+  document.getElementById('nav-links')?.classList.remove('open');
+  const btn = document.getElementById('hamburger');
+  btn?.classList.remove('active');
+  btn?.setAttribute('aria-expanded', 'false');
+}
+
+/* ============================================================
+   SCROLL TOP
+============================================================ */
+function initScrollTop() {
+  const btn = document.getElementById('scroll-top');
+  if (!btn) return;
+  window.addEventListener('scroll', () => btn.classList.toggle('visible', window.scrollY > 500), { passive: true });
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+}
+
+/* ============================================================
    CONTACT FORM
-=================================== */
+============================================================ */
 function initContactForm() {
   const form = document.getElementById('contact-form');
   if (!form) return;
 
   form.addEventListener('submit', e => {
     e.preventDefault();
-    const name = form.querySelector('#contact-name').value.trim();
-    const email = form.querySelector('#contact-email').value.trim();
-    const message = form.querySelector('#contact-message').value.trim();
+    const name    = form.querySelector('#cn').value.trim();
+    const email   = form.querySelector('#ce').value.trim();
+    const subject = form.querySelector('#cs').value.trim() || 'Portfolio Contact';
+    const message = form.querySelector('#cm').value.trim();
 
-    if (!name || !email || !message) {
-      showToast('Please fill in all required fields.', 'error');
-      return;
-    }
+    if (!name || !email || !message) { toast('Please fill in all required fields.', 'error'); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { toast('Enter a valid email address.', 'error'); return; }
 
-    if (!isValidEmail(email)) {
-      showToast('Please enter a valid email address.', 'error');
-      return;
-    }
-
-    // Since this is a static site, open mailto as fallback
-    const subject = form.querySelector('#contact-subject').value.trim() || 'Portfolio Contact';
-    const mailtoLink = `mailto:kapilchn7@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`)}`;
-    window.open(mailtoLink, '_self');
-    showToast('Opening your email client...', 'info');
+    window.open(
+      `mailto:kapilchn7@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`)}`,
+      '_self'
+    );
+    toast('Opening email client…', 'info');
     form.reset();
   });
 }
 
-function isValidEmail(email) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
-
-/* ===================================
-   TOAST NOTIFICATIONS
-=================================== */
-function showToast(message, type = 'info') {
-  let container = document.querySelector('.toast-container');
-  if (!container) {
-    container = document.createElement('div');
-    container.className = 'toast-container';
-    document.body.appendChild(container);
-  }
+/* ============================================================
+   TOAST
+============================================================ */
+function toast(msg, type = 'info') {
+  let box = document.querySelector('.toast-container');
+  if (!box) { box = document.createElement('div'); box.className = 'toast-container'; document.body.appendChild(box); }
 
   const icons = { success: 'fas fa-check-circle', error: 'fas fa-times-circle', info: 'fas fa-info-circle' };
+  const t = document.createElement('div');
+  t.className = `toast ${type}`;
+  t.innerHTML = `<i class="${icons[type]}"></i><span>${msg}</span>`;
+  box.appendChild(t);
 
-  const toast = document.createElement('div');
-  toast.className = `toast ${type}`;
-  toast.innerHTML = `<i class="${icons[type] || icons.info}"></i><span>${message}</span>`;
-  container.appendChild(toast);
-
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => toast.classList.add('show'));
-  });
-
-  setTimeout(() => {
-    toast.classList.remove('show');
-    setTimeout(() => toast.remove(), 400);
-  }, 4000);
+  requestAnimationFrame(() => requestAnimationFrame(() => t.classList.add('show')));
+  setTimeout(() => { t.classList.remove('show'); setTimeout(() => t.remove(), 350); }, 4000);
 }
 
-/* ===================================
-   SECRET KEYBOARD SHORTCUT (Ctrl+Shift+A => admin.html)
-=================================== */
-function initKeyboardShortcut() {
+/* ============================================================
+   SECRET SHORTCUT  Ctrl+Shift+A
+============================================================ */
+function initKeyShortcut() {
   document.addEventListener('keydown', e => {
-    if (e.ctrlKey && e.shiftKey && e.key === 'A') {
-      e.preventDefault();
-      window.location.href = 'admin.html';
-    }
+    if (e.ctrlKey && e.shiftKey && e.key === 'A') { e.preventDefault(); window.location.href = 'admin.html'; }
   });
 }

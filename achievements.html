@@ -3,604 +3,429 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Achievements | Kapil Chauhan</title>
+  <title>Awards & Achievements — Kapil Chauhan</title>
   <meta name="description" content="Achievements, awards, and competitive programming profiles of Kapil Chauhan." />
+  <meta name="theme-color" content="#FFFFFF" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="assets/css/style.css" />
   <style>
-    /* ── Page Layout ── */
-    .achievements-page {
-      min-height: 100vh;
-      padding: 100px 0 60px;
-      background: var(--bg-main);
-    }
+    /* page-specific styles only */
+    .page { padding-top: var(--nav-h); min-height: 100vh; }
 
-    .back-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      margin-bottom: 40px;
-      transition: var(--transition);
-      padding: 8px 16px;
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-sm);
-      background: var(--bg-card);
+    .page-hero {
+      padding: 64px 0 56px;
+      border-bottom: 1px solid var(--border);
     }
-    .back-btn:hover {
-      color: var(--primary);
-      border-color: var(--border-hover);
-      background: var(--bg-card-hover);
+    .page-kicker {
+      font-family: var(--mono); font-size: 0.72rem; color: var(--accent);
+      text-transform: uppercase; letter-spacing: 0.16em; margin-bottom: 8px;
     }
+    .page-title {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900; letter-spacing: -0.04em; color: var(--text); margin-bottom: 12px;
+    }
+    .page-sub { font-size: 0.95rem; color: var(--text-3); max-width: 480px; line-height: 1.75; }
 
-    /* ── Section Header ── */
-    .section-label {
-      display: inline-block;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--primary);
-      background: rgba(108, 99, 255, 0.1);
-      padding: 6px 16px;
-      border-radius: 50px;
-      border: 1px solid rgba(108, 99, 255, 0.2);
-      margin-bottom: 16px;
+    /* back link */
+    .back-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.85rem; color: var(--text-3); margin-bottom: 36px;
+      transition: color 0.15s;
     }
-    .section-title {
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      font-weight: 800;
-      line-height: 1.2;
-      margin-bottom: 16px;
-    }
-    .gradient-text {
-      background: var(--gradient-primary);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .section-subtitle {
-      color: var(--text-secondary);
-      font-size: 1rem;
-      max-width: 560px;
-      margin: 0 auto 60px;
-    }
-    .section-header {
-      text-align: center;
-      margin-bottom: 48px;
-    }
+    .back-link:hover { color: var(--accent); }
 
-    /* ── Achievement Cards Grid ── */
-    .achievements-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
-      gap: 24px;
-      margin-bottom: 64px;
+    /* awards list */
+    .awards-list { display: flex; flex-direction: column; }
+    .award-row {
+      display: flex; align-items: flex-start; gap: 20px;
+      padding: 28px 0; border-bottom: 1px solid var(--border);
     }
+    .award-row:first-child { border-top: 1px solid var(--border); }
 
-    .achievement-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-lg);
-      padding: 28px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      transition: var(--transition);
-      position: relative;
-      overflow: hidden;
+    .award-icon {
+      width: 40px; height: 40px; border-radius: 8px;
+      background: var(--bg-2); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; color: var(--accent); flex-shrink: 0; margin-top: 2px;
     }
-    .achievement-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: var(--radius-lg);
-      background: var(--gradient-primary);
-      opacity: 0;
-      transition: opacity 0.3s;
-      z-index: 0;
+    .award-body { flex: 1; }
+    .award-meta {
+      display: flex; align-items: baseline; gap: 10px; margin-bottom: 5px; flex-wrap: wrap;
     }
-    .achievement-card:hover {
-      border-color: var(--border-hover);
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-glow);
+    .award-title { font-size: 1rem; font-weight: 700; color: var(--text); }
+    .award-org   { font-size: 0.8rem; color: var(--text-3); }
+    .award-label {
+      font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--accent); padding: 2px 7px; border: 1px solid rgba(91,91,214,0.25);
+      border-radius: 3px; flex-shrink: 0;
     }
-    .achievement-card:hover::before { opacity: 0.04; }
+    .award-desc { font-size: 0.88rem; color: var(--text-2); line-height: 1.7; margin-bottom: 10px; }
+    .award-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.82rem; color: var(--accent); font-weight: 500;
+      transition: opacity 0.15s;
+    }
+    .award-link:hover { opacity: 0.7; }
 
-    .achievement-card > * { position: relative; z-index: 1; }
-
-    .card-icon-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    /* section divider */
+    .section-block { padding: 64px 0; border-bottom: 1px solid var(--border); }
+    .block-kicker {
+      font-family: var(--mono); font-size: 0.72rem; color: var(--accent);
+      text-transform: uppercase; letter-spacing: 0.16em; margin-bottom: 6px;
     }
-    .card-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: var(--radius-md);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.3rem;
+    .block-title {
+      font-size: clamp(1.4rem, 3vw, 1.9rem);
+      font-weight: 800; letter-spacing: -0.03em; color: var(--text); margin-bottom: 6px;
+    }
+    .block-sub { font-size: 0.9rem; color: var(--text-3); margin-bottom: 40px; }
+
+    /* cp profiles */
+    .cp-row {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 20px; padding: 20px 0; border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .cp-row:first-child { border-top: 1px solid var(--border); }
+    .cp-left { display: flex; align-items: center; gap: 14px; }
+    .cp-icon { font-size: 1.3rem; color: var(--accent); width: 22px; text-align: center; }
+    .cp-name { font-size: 0.95rem; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+    .cp-note { font-size: 0.82rem; color: var(--text-3); }
+    .cp-btn  {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 0.82rem; font-weight: 500; color: var(--text);
+      border: 1.5px solid var(--border); border-radius: 5px;
+      padding: 7px 14px; transition: border-color 0.15s, color 0.15s;
       flex-shrink: 0;
     }
-    .card-badge {
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 4px 10px;
-      border-radius: 50px;
-    }
+    .cp-btn:hover { border-color: var(--accent); color: var(--accent); }
 
-    .card-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      line-height: 1.3;
-    }
-    .card-org {
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--text-secondary);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-    .card-desc {
-      font-size: 0.88rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-      flex: 1;
-    }
-    .card-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--primary);
-      text-decoration: none;
-      margin-top: auto;
-      transition: var(--transition);
-      border-top: 1px solid var(--border-color);
-      padding-top: 14px;
-    }
-    .card-link:hover {
-      color: var(--primary-light);
-      gap: 10px;
-    }
-
-    /* ── Color themes per card ── */
-    .theme-purple .card-icon  { background: rgba(108, 99, 255, 0.15); color: #8B85FF; }
-    .theme-purple .card-badge { background: rgba(108, 99, 255, 0.12); color: #8B85FF; border: 1px solid rgba(108,99,255,0.25); }
-
-    .theme-blue .card-icon  { background: rgba(0, 212, 255, 0.12); color: #00D4FF; }
-    .theme-blue .card-badge { background: rgba(0, 212, 255, 0.1); color: #00D4FF; border: 1px solid rgba(0,212,255,0.25); }
-
-    .theme-gold .card-icon  { background: rgba(255, 196, 0, 0.12); color: #FFC400; }
-    .theme-gold .card-badge { background: rgba(255, 196, 0, 0.1); color: #FFC400; border: 1px solid rgba(255,196,0,0.25); }
-
-    .theme-green .card-icon  { background: rgba(0, 212, 160, 0.12); color: #00D4A0; }
-    .theme-green .card-badge { background: rgba(0, 212, 160, 0.1); color: #00D4A0; border: 1px solid rgba(0,212,160,0.25); }
-
-    .theme-red .card-icon  { background: rgba(255, 107, 107, 0.12); color: #FF6B6B; }
-    .theme-red .card-badge { background: rgba(255, 107, 107, 0.1); color: #FF6B6B; border: 1px solid rgba(255,107,107,0.25); }
-
-    /* ── Competitive Programming Section ── */
-    .cp-section {
-      margin-top: 16px;
-    }
-    .cp-section .section-header { margin-bottom: 32px; }
-
-    .cp-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-lg);
-      padding: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      transition: var(--transition);
+    /* chess */
+    .chess-row {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 20px; padding: 20px 0; border-bottom: 1px solid var(--border);
       flex-wrap: wrap;
     }
-    .cp-card:hover {
-      border-color: var(--border-hover);
-      box-shadow: var(--shadow-glow);
-      transform: translateY(-3px);
+    .chess-row:first-child { border-top: 1px solid var(--border); }
+    .chess-left  { display: flex; align-items: center; gap: 14px; }
+    .chess-icon  { font-size: 1.3rem; color: var(--text-3); width: 22px; text-align: center; }
+    .chess-name  { font-size: 0.95rem; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+    .chess-note  { font-size: 0.82rem; color: var(--text-3); }
+    .chess-btns  { display: flex; gap: 8px; flex-wrap: wrap; }
+    .chess-btn   {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.8rem; font-weight: 500; color: var(--text-2);
+      border: 1.5px solid var(--border); border-radius: 5px;
+      padding: 6px 13px; transition: border-color 0.15s, color 0.15s;
     }
-    .cp-left {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-    .cp-icon {
-      width: 60px;
-      height: 60px;
-      border-radius: var(--radius-md);
-      background: rgba(108, 99, 255, 0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.6rem;
-      color: var(--primary);
-      flex-shrink: 0;
-    }
-    .cp-info h3 {
-      font-size: 1.15rem;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-    .cp-info p {
-      font-size: 0.88rem;
-      color: var(--text-secondary);
-    }
-    .cp-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 24px;
-      border-radius: var(--radius-md);
-      background: var(--gradient-primary);
-      color: #fff;
-      font-weight: 600;
-      font-size: 0.9rem;
-      text-decoration: none;
-      transition: var(--transition);
-      white-space: nowrap;
-    }
-    .cp-btn:hover {
-      opacity: 0.85;
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-glow);
+    .chess-btn:hover { border-color: var(--text); color: var(--text); }
+
+    /* hobbies */
+    .hobbies-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+    .hobby-tag {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 0.85rem; color: var(--text-2);
+      background: var(--bg-2); border: 1px solid var(--border);
+      border-radius: 4px; padding: 7px 14px;
     }
 
-    /* ── Chess section ── */
-    .chess-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-lg);
-      padding: 32px;
-      margin-top: 24px;
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      flex-wrap: wrap;
-      transition: var(--transition);
-    }
-    .chess-card:hover {
-      border-color: rgba(255,196,0,0.3);
-      box-shadow: 0 0 30px rgba(255,196,0,0.1);
-      transform: translateY(-3px);
-    }
-    .chess-icon {
-      width: 60px;
-      height: 60px;
-      border-radius: var(--radius-md);
-      background: rgba(255, 196, 0, 0.12);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.7rem;
-      color: #FFC400;
-      flex-shrink: 0;
-    }
-    .chess-info h3 {
-      font-size: 1.15rem;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-    .chess-info p {
-      font-size: 0.88rem;
-      color: var(--text-secondary);
-    }
-    .chess-links {
-      margin-left: auto;
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-    .chess-link-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 18px;
-      border-radius: var(--radius-md);
-      border: 1px solid rgba(255,196,0,0.3);
-      color: #FFC400;
-      font-weight: 600;
-      font-size: 0.85rem;
-      text-decoration: none;
-      background: rgba(255,196,0,0.08);
-      transition: var(--transition);
-    }
-    .chess-link-btn:hover {
-      background: rgba(255,196,0,0.15);
-      transform: translateY(-2px);
+    @media (max-width: 768px) {
+      /* no ticker on this page — menu starts just below nav */
+      .nav-links { top: var(--nav-h); }
+
+      /* stack cp/chess rows on mobile */
+      .cp-row    { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .chess-row { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .cp-btn    { width: 100%; justify-content: center; }
+
+      /* page hero */
+      .page-hero { padding: 40px 0 32px; }
+      .section-block { padding: 48px 0; }
     }
 
-    /* ── Hobbies pill row ── */
-    .hobbies-row {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 40px;
-      justify-content: center;
-    }
-    .hobby-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 20px;
-      border-radius: 50px;
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: var(--transition);
-    }
-    .hobby-pill:hover {
-      border-color: var(--border-hover);
-      color: var(--text-primary);
+    @media (max-width: 600px) {
+      .award-row { flex-direction: column; gap: 12px; }
+      .award-icon { width: 36px; height: 36px; }
     }
 
-    /* ── Divider ── */
-    .section-divider {
-      border: none;
-      border-top: 1px solid var(--border-color);
-      margin: 56px 0;
+    @media (max-width: 480px) {
+      .page-hero { padding: 28px 0 24px; }
+      .section-block { padding: 36px 0; }
+      .chess-btns { flex-direction: column; }
+      .chess-btn  { width: 100%; justify-content: center; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
+  <!-- Nav -->
   <nav id="navbar" class="navbar">
     <div class="nav-container">
       <a href="index.html" class="nav-logo">
         <span class="logo-bracket">&lt;</span>KC<span class="logo-bracket">/&gt;</span>
       </a>
-      <ul class="nav-links">
-        <li><a href="index.html#about" class="nav-link">About</a></li>
-        <li><a href="index.html#skills" class="nav-link">Skills</a></li>
+      <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html#about"      class="nav-link">About</a></li>
+        <li><a href="index.html#skills"     class="nav-link">Skills</a></li>
         <li><a href="index.html#experience" class="nav-link">Experience</a></li>
-        <li><a href="index.html#projects" class="nav-link">Projects</a></li>
-        <li><a href="achievements.html" class="nav-link nav-contact">Achievements</a></li>
-        <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+        <li><a href="index.html#projects"   class="nav-link">Projects</a></li>
+        <li><a href="achievements.html"     class="nav-link active">Awards</a></li>
+        <li><a href="index.html#contact"    class="nav-link nav-contact">Contact</a></li>
       </ul>
     </div>
   </nav>
 
-  <main class="achievements-page">
+  <div class="page">
     <div class="container">
 
-      <!-- Back -->
-      <a href="index.html" class="back-btn">
-        <i class="fas fa-arrow-left"></i> Back to Portfolio
-      </a>
-
-      <!-- Header -->
-      <div class="section-header">
-        <span class="section-label">My Journey</span>
-        <h1 class="section-title">Achievements &amp; <span class="gradient-text">Awards</span></h1>
-        <p class="section-subtitle">A collection of milestones, recognitions, and competitions that shaped my journey as an engineer.</p>
+      <!-- Page hero -->
+      <div class="page-hero">
+        <a href="index.html" class="back-link">
+          <i class="fas fa-arrow-left"></i> Back to portfolio
+        </a>
+        <p class="page-kicker">Achievements</p>
+        <h1 class="page-title">Awards & Recognition</h1>
+        <p class="page-sub">Milestones, awards, and competitions that shaped my journey as an engineer.</p>
       </div>
 
-      <!-- ── Awards & Competitions ── -->
-      <div class="achievements-grid">
+      <!-- Awards -->
+      <div class="section-block">
+        <div class="awards-list">
 
-        <!-- NASA Space Apps -->
-        <div class="achievement-card theme-blue">
-          <div class="card-icon-row">
-            <div class="card-icon"><i class="fas fa-rocket"></i></div>
-            <span class="card-badge">Global Competition</span>
+          <!-- NASA Space Apps -->
+          <div class="award-row">
+            <div class="award-icon"><i class="fas fa-rocket"></i></div>
+            <div class="award-body">
+              <div class="award-meta">
+                <span class="award-title">International Space Apps Challenge — Galactic Problem Solver</span>
+                <span class="award-label">Global</span>
+              </div>
+              <div class="award-org">NASA · Pune, India · October 2020</div>
+              <p class="award-desc">Awarded in special appreciation for efforts to address challenges on earth and in space.</p>
+              <a href="https://drive.google.com/drive/u/0/folders/1dIy-niDefNDR8L1PAgsLZCE-BK3-cssh" target="_blank" rel="noopener noreferrer" class="award-link">
+                <i class="fas fa-external-link-alt"></i> View Certificate
+              </a>
+            </div>
           </div>
-          <div>
-            <div class="card-org">NASA</div>
-            <div class="card-title">International Space Apps Challenge — Galactic Problem Solver</div>
+
+          <!-- IICC -->
+          <div class="award-row">
+            <div class="award-icon"><i class="fas fa-code"></i></div>
+            <div class="award-body">
+              <div class="award-meta">
+                <span class="award-title">Innovate India Coding Championship (Round 2) — Semi Finalist</span>
+                <span class="award-label">National</span>
+              </div>
+              <div class="award-org">Coding Ninjas & Chandigarh University · July 2022</div>
+              <p class="award-desc">Certificate of Appreciation for active participation in IICC Round-2. Referral ID: ccef826eb67cad84.</p>
+              <a href="https://drive.google.com/drive/u/0/folders/1dIy-niDefNDR8L1PAgsLZCE-BK3-cssh" target="_blank" rel="noopener noreferrer" class="award-link">
+                <i class="fas fa-external-link-alt"></i> View Certificate
+              </a>
+            </div>
           </div>
-          <p class="card-desc">Awarded in special appreciation for efforts to address challenges on earth and in space. Pune, India chapter — October 2020.</p>
-          <a href="https://drive.google.com/drive/u/0/folders/1dIy-niDefNDR8L1PAgsLZCE-BK3-cssh" target="_blank" rel="noopener noreferrer" class="card-link">
-            <i class="fas fa-external-link-alt"></i> View Certificate
-          </a>
+
+          <!-- Accio Wars -->
+          <div class="award-row">
+            <div class="award-icon"><i class="fas fa-terminal"></i></div>
+            <div class="award-body">
+              <div class="award-meta">
+                <span class="award-title">Accio Wars Coding Contest — Rank 971 / 11,000+</span>
+                <span class="award-label">Contest</span>
+              </div>
+              <div class="award-org">AccioJob · July 2022</div>
+              <p class="award-desc">Secured rank 971 out of 11,000+ participants.</p>
+              <a href="https://drive.google.com/drive/u/0/folders/1dIy-niDefNDR8L1PAgsLZCE-BK3-cssh" target="_blank" rel="noopener noreferrer" class="award-link">
+                <i class="fas fa-external-link-alt"></i> View Certificate
+              </a>
+            </div>
+          </div>
+
+          <!-- TCS Chess -->
+          <div class="award-row">
+            <div class="award-icon"><i class="fas fa-chess-king"></i></div>
+            <div class="award-body">
+              <div class="award-meta">
+                <span class="award-title">Chess Tournament Winner — JDC Chennai Sports Meet</span>
+                <span class="award-label">1st Place</span>
+              </div>
+              <div class="award-org">Tata Consultancy Services · JDC Chennai · 2025</div>
+              <p class="award-desc">Awarded for outstanding contribution and commitment. Signed by Milind Karve, JDC Head.</p>
+              <a href="https://drive.google.com/file/d/1QjVLvMtd9_o19OdQh679ePlVY4j6LPBU/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="award-link">
+                <i class="fas fa-external-link-alt"></i> View Certificate
+              </a>
+            </div>
+          </div>
+
+          <!-- TCS Gems Special Initiative -->
+          <div class="award-row">
+            <div class="award-icon"><i class="fas fa-gem"></i></div>
+            <div class="award-body">
+              <div class="award-meta">
+                <span class="award-title">Special Initiative Award — TCS Gems</span>
+                <span class="award-label">TCS Award</span>
+              </div>
+              <div class="award-org">Tata Consultancy Services · April 2025</div>
+              <p class="award-desc">In appreciation of outstanding contribution to the organisation. Awarded by Milind Lakkad, Executive VP & Global Head HR.</p>
+              <a href="https://drive.google.com/drive/u/0/folders/1dIy-niDefNDR8L1PAgsLZCE-BK3-cssh" target="_blank" rel="noopener noreferrer" class="award-link">
+                <i class="fas fa-external-link-alt"></i> View Certificate
+              </a>
+            </div>
+          </div>
+
+          <!-- TCS Star Team -->
+          <div class="award-row">
+            <div class="award-icon"><i class="fas fa-star"></i></div>
+            <div class="award-body">
+              <div class="award-meta">
+                <span class="award-title">Star Team Award — TCS Gems</span>
+                <span class="award-label">TCS Award</span>
+              </div>
+              <div class="award-org">Tata Consultancy Services · October 2025</div>
+              <p class="award-desc">In appreciation of outstanding contribution to the organisation. Awarded by Sudeep Kunnumal, VP & Global Head HR.</p>
+              <a href="https://drive.google.com/file/d/1z3Nb-0-n2Dj_eWBHXqJaerbKZm7FFzHq/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="award-link">
+                <i class="fas fa-external-link-alt"></i> View Certificate
+              </a>
+            </div>
+          </div>
+
         </div>
+      </div>
 
-        <!-- IICC -->
-        <div class="achievement-card theme-purple">
-          <div class="card-icon-row">
-            <div class="card-icon"><i class="fas fa-code"></i></div>
-            <span class="card-badge">National Championship</span>
-          </div>
-          <div>
-            <div class="card-org">Coding Ninjas &amp; Chandigarh University</div>
-            <div class="card-title">Innovate India Coding Championship (Round 2) — Semi Finalist</div>
-          </div>
-          <p class="card-desc">Certificate of Appreciation for active participation in IICC Round-2, organised on 29 July 2022. Referral ID: ccef826eb67cad84.</p>
-          <a href="https://drive.google.com/drive/u/0/folders/1dIy-niDefNDR8L1PAgsLZCE-BK3-cssh" target="_blank" rel="noopener noreferrer" class="card-link">
-            <i class="fas fa-external-link-alt"></i> View Certificate
-          </a>
-        </div>
+      <!-- Competitive Programming -->
+      <div class="section-block">
+        <p class="block-kicker">Competitive Programming</p>
+        <h2 class="block-title">Coding Profiles</h2>
+        <p class="block-sub">500+ DSA problems solved across LeetCode, GFG, and other platforms.</p>
 
-        <!-- Accio Wars -->
-        <div class="achievement-card theme-green">
-          <div class="card-icon-row">
-            <div class="card-icon"><i class="fas fa-terminal"></i></div>
-            <span class="card-badge">Coding Contest</span>
-          </div>
-          <div>
-            <div class="card-org">AccioJob</div>
-            <div class="card-title">Accio Wars Coding Contest — Rank 971 / 11,000+ Participants</div>
-          </div>
-          <p class="card-desc">Secured rank 971 out of 11,000+ participants in the AccioWars Coding Contest conducted on 10th July 2022.</p>
-          <a href="https://drive.google.com/drive/u/0/folders/1dIy-niDefNDR8L1PAgsLZCE-BK3-cssh" target="_blank" rel="noopener noreferrer" class="card-link">
-            <i class="fas fa-external-link-alt"></i> View Certificate
-          </a>
-        </div>
-
-        <!-- TCS Chess Winner -->
-        <div class="achievement-card theme-gold">
-          <div class="card-icon-row">
-            <div class="card-icon"><i class="fas fa-chess-king"></i></div>
-            <span class="card-badge">1st Place</span>
-          </div>
-          <div>
-            <div class="card-org">TCS — JDC Chennai Sports Meet 2025</div>
-            <div class="card-title">Chess Tournament Winner — Japan Delivery Center</div>
-          </div>
-          <p class="card-desc">Awarded for outstanding contribution and commitment towards JDC Chennai Sports Meet 2025. Signed by Milind Karve, JDC Head.</p>
-          <a href="https://drive.google.com/file/d/1QjVLvMtd9_o19OdQh679ePlVY4j6LPBU/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="card-link">
-            <i class="fas fa-external-link-alt"></i> View Certificate
-          </a>
-        </div>
-
-        <!-- TCS Special Initiative Award -->
-        <div class="achievement-card theme-purple">
-          <div class="card-icon-row">
-            <div class="card-icon"><i class="fas fa-gem"></i></div>
-            <span class="card-badge">TCS Gems Award</span>
-          </div>
-          <div>
-            <div class="card-org">Tata Consultancy Services</div>
-            <div class="card-title">Special Initiative Award — TCS Gems</div>
-          </div>
-          <p class="card-desc">In appreciation of outstanding contribution to the organisation. Awarded on 08-Apr-2025 by Milind Lakkad, Executive VP &amp; Global Head, Human Resources.</p>
-          <a href="https://drive.google.com/drive/u/0/folders/1dIy-niDefNDR8L1PAgsLZCE-BK3-cssh" target="_blank" rel="noopener noreferrer" class="card-link">
-            <i class="fas fa-external-link-alt"></i> View Certificate
-          </a>
-        </div>
-
-        <!-- TCS Star Team Award -->
-        <div class="achievement-card theme-blue">
-          <div class="card-icon-row">
-            <div class="card-icon"><i class="fas fa-star"></i></div>
-            <span class="card-badge">TCS Gems Award</span>
-          </div>
-          <div>
-            <div class="card-org">Tata Consultancy Services</div>
-            <div class="card-title">Star Team Award — TCS Gems</div>
-          </div>
-          <p class="card-desc">In appreciation of outstanding contribution to the organisation. Awarded on 27-Oct-2025 by Sudeep Kunnumal, VP &amp; Global Head, Human Resources.</p>
-          <a href="https://drive.google.com/file/d/1z3Nb-0-n2Dj_eWBHXqJaerbKZm7FFzHq/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="card-link">
-            <i class="fas fa-external-link-alt"></i> View Certificate
-          </a>
-        </div>
-
-      </div><!-- /achievements-grid -->
-
-      <!-- ── Competitive Programming ── -->
-      <div class="cp-section">
-        <div class="section-header">
-          <span class="section-label">Coding Profiles</span>
-          <h2 class="section-title">Competitive <span class="gradient-text">Programming</span></h2>
-          <p class="section-subtitle">500+ DSA problems solved across LeetCode, GFG, and other platforms. Check all profiles via Linktree.</p>
-        </div>
-
-        <div class="cp-card">
+        <div class="cp-row">
           <div class="cp-left">
-            <div class="cp-icon"><i class="fas fa-code-branch"></i></div>
-            <div class="cp-info">
-              <h3>All Competitive Programming Profiles</h3>
-              <p>LeetCode · GeeksForGeeks · CodeChef · Codeforces · and more</p>
+            <i class="fas fa-code-branch cp-icon"></i>
+            <div>
+              <div class="cp-name">All Profiles — Linktree</div>
+              <div class="cp-note">LeetCode · GeeksForGeeks · CodeChef · Codeforces · and more</div>
             </div>
           </div>
           <a href="https://linktr.ee/ninjacoder404" target="_blank" rel="noopener noreferrer" class="cp-btn">
             <i class="fas fa-external-link-alt"></i> View All Profiles
           </a>
         </div>
-
       </div>
 
-      <hr class="section-divider" />
+      <!-- Chess -->
+      <div class="section-block">
+        <p class="block-kicker">Chess</p>
+        <h2 class="block-title">Chess Rankings</h2>
+        <p class="block-sub">Arena FIDE Master (AFM) · 2300+ on Chess.com (Rapid & Blitz)</p>
 
-      <!-- ── Chess Profiles ── -->
-      <div class="cp-section">
-        <div class="section-header">
-          <span class="section-label">Chess Profiles</span>
-          <h2 class="section-title">Chess <span class="gradient-text">Rankings</span></h2>
-          <p class="section-subtitle">Arena FIDE Master title &nbsp;·&nbsp; 2300+ on Chess.com (Rapid &amp; Blitz) &nbsp;·&nbsp; Profiles ordered highest to lowest</p>
-        </div>
+        <div>
+          <div class="chess-row">
+            <div class="chess-left">
+              <i class="fas fa-trophy chess-icon"></i>
+              <div>
+                <div class="chess-name">FIDE — Arena FIDE Master (AFM)</div>
+                <div class="chess-note">Official FIDE title · Highest recognition</div>
+              </div>
+            </div>
+            <div class="chess-btns">
+              <a href="https://drive.google.com/file/d/1ytppxYe4W5N5lRhFYGIJplTpCi8ZShHj/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="chess-btn">
+                <i class="fas fa-certificate"></i> Certificate
+              </a>
+              <a href="https://worldchess.com/profile/69975" target="_blank" rel="noopener noreferrer" class="chess-btn">
+                <i class="fas fa-globe"></i> World Chess
+              </a>
+            </div>
+          </div>
 
-        <!-- FIDE — highest title -->
-        <div class="chess-card" style="margin-bottom:16px;">
-          <div class="chess-icon"><i class="fas fa-trophy"></i></div>
-          <div class="chess-info">
-            <h3>FIDE — Arena FIDE Master (AFM)</h3>
-            <p>Official FIDE title &nbsp;·&nbsp; Highest recognition &nbsp;·&nbsp; View certificate &amp; FIDE profile</p>
+          <div class="chess-row">
+            <div class="chess-left">
+              <i class="fas fa-chess-king chess-icon"></i>
+              <div>
+                <div class="chess-name">Chess.com — 2300+ Rating</div>
+                <div class="chess-note">Rapid & Blitz · Top-tier online rating</div>
+              </div>
+            </div>
+            <div class="chess-btns">
+              <a href="https://www.chess.com/member/kapilchn" target="_blank" rel="noopener noreferrer" class="chess-btn">
+                <i class="fas fa-chess-knight"></i> View Profile
+              </a>
+            </div>
           </div>
-          <div class="chess-links">
-            <a href="https://drive.google.com/file/d/1ytppxYe4W5N5lRhFYGIJplTpCi8ZShHj/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="chess-link-btn">
-              <i class="fas fa-certificate"></i> View Certificate
-            </a>
-            <a href="https://worldchess.com/profile/69975" target="_blank" rel="noopener noreferrer" class="chess-link-btn">
-              <i class="fas fa-globe"></i> World Chess
-            </a>
-          </div>
-        </div>
 
-        <!-- Chess.com — 2300+ -->
-        <div class="chess-card" style="margin-bottom:16px;">
-          <div class="chess-icon"><i class="fas fa-chess-king"></i></div>
-          <div class="chess-info">
-            <h3>Chess.com — 2300+ Rating (Rapid &amp; Blitz)</h3>
-            <p>Top-tier online rating on the world's largest chess platform</p>
-          </div>
-          <div class="chess-links">
-            <a href="https://www.chess.com/member/kapilchn" target="_blank" rel="noopener noreferrer" class="chess-link-btn">
-              <i class="fas fa-chess-knight"></i> View Profile
-            </a>
-          </div>
-        </div>
-
-        <!-- Lichess -->
-        <div class="chess-card">
-          <div class="chess-icon"><i class="fas fa-chess-board"></i></div>
-          <div class="chess-info">
-            <h3>Lichess — gangMemberGM</h3>
-            <p>Open-source chess platform &nbsp;·&nbsp; Active competitive play</p>
-          </div>
-          <div class="chess-links">
-            <a href="https://lichess.org/@/gangMemberGM" target="_blank" rel="noopener noreferrer" class="chess-link-btn">
-              <i class="fas fa-chess-board"></i> View Profile
-            </a>
+          <div class="chess-row">
+            <div class="chess-left">
+              <i class="fas fa-chess-board chess-icon"></i>
+              <div>
+                <div class="chess-name">Lichess — gangMemberGM</div>
+                <div class="chess-note">Open-source platform · Active competitive play</div>
+              </div>
+            </div>
+            <div class="chess-btns">
+              <a href="https://lichess.org/@/gangMemberGM" target="_blank" rel="noopener noreferrer" class="chess-btn">
+                <i class="fas fa-chess-board"></i> View Profile
+              </a>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- ── Hobbies ── -->
-      <hr class="section-divider" />
-      <div style="text-align:center;">
-        <span class="section-label">Outside of Work</span>
-        <h2 class="section-title" style="margin-top:12px;">Hobbies &amp; <span class="gradient-text">Interests</span></h2>
+      <!-- Hobbies -->
+      <div class="section-block" style="border-bottom: none;">
+        <p class="block-kicker">Outside of Work</p>
+        <h2 class="block-title">Hobbies & Interests</h2>
         <div class="hobbies-row">
-          <span class="hobby-pill"><i class="fas fa-chess"></i> Chess</span>
-          <span class="hobby-pill"><i class="fas fa-table-tennis-paddle-ball"></i> Table Tennis</span>
-          <span class="hobby-pill"><i class="fas fa-code"></i> Competitive Programming</span>
-          <span class="hobby-pill"><i class="fas fa-robot"></i> Robotics &amp; AI</span>
+          <span class="hobby-tag"><i class="fas fa-chess"></i> Chess</span>
+          <span class="hobby-tag"><i class="fas fa-table-tennis-paddle-ball"></i> Table Tennis</span>
+          <span class="hobby-tag"><i class="fas fa-code"></i> Competitive Programming</span>
+          <span class="hobby-tag"><i class="fas fa-robot"></i> Robotics & AI</span>
         </div>
       </div>
 
-    </div><!-- /container -->
-  </main>
+    </div>
+  </div>
 
   <!-- Footer -->
-  <footer style="text-align:center; padding: 32px 0; color: var(--text-muted); font-size:0.85rem; border-top: 1px solid var(--border-color);">
-    &copy; <span id="yr"></span> Kapil Chauhan &mdash; Built with <span style="color:#FF6B6B;">&#9829;</span>
+  <footer class="footer" style="border-top: 1px solid var(--border);">
+    <div class="container">
+      <div class="footer-inner">
+        <p class="footer-copy">&copy; <span id="yr"></span> Kapil Chauhan</p>
+        <nav class="footer-nav">
+          <a href="index.html">Portfolio</a>
+          <a href="index.html#contact">Contact</a>
+        </nav>
+      </div>
+    </div>
   </footer>
 
   <script>
     document.getElementById('yr').textContent = new Date().getFullYear();
 
-    // Sticky navbar scroll effect
-    const navbar = document.getElementById('navbar');
+    // navbar scroll effect
+    const nb = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 20);
-    });
+      nb.classList.toggle('scrolled', window.scrollY > 10);
+    }, { passive: true });
+
+    // hamburger menu
+    const hamburgerBtn = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    if (hamburgerBtn && navLinks) {
+      hamburgerBtn.addEventListener('click', () => {
+        const open = navLinks.classList.toggle('open');
+        hamburgerBtn.classList.toggle('active', open);
+        hamburgerBtn.setAttribute('aria-expanded', open);
+      });
+      document.addEventListener('click', e => {
+        if (!hamburgerBtn.contains(e.target) && !navLinks.contains(e.target)) {
+          navLinks.classList.remove('open');
+          hamburgerBtn.classList.remove('active');
+          hamburgerBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
   </script>
 </body>
 </html>
